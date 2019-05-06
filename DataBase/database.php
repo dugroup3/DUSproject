@@ -35,7 +35,7 @@ function checkAdmin()
 }
 
 
-//Get the staff List
+//Get the staff List Test
 function getStaffList()
 {
     $dbh = connectDBPDO();
@@ -46,7 +46,7 @@ function getStaffList()
     return $rows;
 }
 
-//Add Game
+//Add Facility
 function AddFacility($FacilityName, $Opentime, $CloseTime, $Description, $Capacity, $Picture, $Prices)
 {
     $dbh = connectDBPDO();
@@ -55,5 +55,16 @@ function AddFacility($FacilityName, $Opentime, $CloseTime, $Description, $Capaci
     $statement = $dbh->query($sql);
     $dbh = null;
     return $statement;
+}
+
+//Get Facility list Method
+function getFacilityList()
+{
+    $dbh = connectDBPDO();
+    $sql = "SELECT * FROM `Facility`";
+    $statement = $dbh->query($sql);
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $rows;
 }
 ?>
