@@ -43,6 +43,11 @@ a:focus {
 	margin: 40px 0;
 }
 
+.nav-a{
+	font-size: 18px;
+	font-weight: bold;
+}
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -175,12 +180,12 @@ a.article:hover {
 
 .MyAdminH1{
 	color: white;
-	background: #1b6d85;
+	background: #742e68;
 }
 
 .Mycontainer {
 	margin-top: 40px;
-	background-color: #88499C;
+	background-color: #742e68;
 	padding-right: 15px;
 	padding-left: 15px;
 	margin-right: auto;
@@ -195,6 +200,10 @@ a.article:hover {
 
 .Mycontainer:after {
 	clear: both;
+}
+
+.MyAdminH1{
+	text-align: center;
 }
 
 @media (min-width: 768px) {

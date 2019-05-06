@@ -7,24 +7,24 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="../Web_Basic_User/index.php" class="navbar-brand nav-title">Durham University Sport</a>
+            <a href="../Web_Basic_User/index.php" class="nav-a navbar-brand nav-title">Durham University Sport</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav navbar-right">
                 <li class="cative">
-                    <a href="index.php">Admin Home Page</a>
+                    <a class="nav-a" href="index.php">Admin Home Page</a>
                 </li>
                 <li class="cative">
-                    <a href="GameManagement.php">Game Management</a>
+                    <a class="nav-a" href="FacilityManagement.php">Facility Management</a>
                 </li>
                 <li class="cative">
-                    <a href="Leaderboard.php">Leaderboard</a>
+                    <a class="nav-a" href="#">Booking Management</a>
                 </li>
                 <li class="cative">
-                    <a href="UserStatistics.php">User Statistics</a>
+                    <a class="nav-a" href="#">Classes</a>
                 </li>
                 <li class="cative">
-                    <a href="../Web_Basic_User/logout.php">Log out</a>
+                    <a class="nav-a" href="../Web_Basic_User/logout.php">Log out</a>
                 </li>
             </ul>
         </div>

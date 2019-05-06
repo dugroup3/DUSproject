@@ -10,13 +10,9 @@ function connectDBPDO()
 {
     $dbms = 'mysql';     //Data base type
     $dbName = 'dbtest';
-//    $host = 'mysql.dur.ac.uk';
-//    $user = 'ccnn23';
-//    $pass = 'r35udder';
     $host = 'dbtest.ce12oaotat2e.eu-west-2.rds.amazonaws.com';
     $user = 'root';
     $pass = '12341234';
-
     $dsn = "$dbms:host=$host;dbname=$dbName";
     $dbh = new PDO($dsn, $user, $pass, array(PDO::ATTR_PERSISTENT => true));
     return $dbh;
