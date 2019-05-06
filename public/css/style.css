@@ -1,0 +1,387 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+body {
+	font-family: 'Poppins', sans-serif;
+	background: #fafafa;
+}
+
+p {
+	font-family: 'Poppins', sans-serif;
+	font-size: 1.1em;
+	font-weight: 300;
+	line-height: 1.7em;
+	color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+	color: inherit;
+	text-decoration: none;
+	transition: all 0.3s;
+}
+
+.navbar {
+	padding: 15px 10px;
+	background: #fff;
+	border: none;
+	border-radius: 0;
+	margin-bottom: 40px;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+	box-shadow: none;
+	outline: none !important;
+	border: none;
+}
+
+.line {
+	width: 100%;
+	height: 1px;
+	border-bottom: 1px dashed #ddd;
+	margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+#sidebar {
+	min-width: 250px;
+	max-width: 250px;
+	background: #742e68;
+	color: #fff;
+	transition: all 0.3s;
+}
+
+#sidebar.active {
+	margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+	padding: 20px;
+	background: #742e68;
+}
+
+#sidebar ul.components {
+	padding: 20px 0;
+	border-bottom: 1px solid #742e68;
+}
+
+#sidebar ul p {
+	color: #fff;
+	padding: 10px;
+}
+
+#sidebar ul li a {
+	padding: 10px;
+	font-size: 1.1em;
+	display: block;
+}
+
+#sidebar ul li a:hover {
+	color: #742e68;
+	background: #fff;
+}
+
+#sidebar ul li.active > a,
+a[aria-expanded="true"] {
+	color: #fff;
+	background: #742e68;
+}
+
+a[data-toggle="collapse"] {
+	position: relative;
+}
+
+.dropdown-toggle::after {
+	display: block;
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	transform: translateY(-50%);
+}
+
+ul ul a {
+	font-size: 0.9em !important;
+	padding-left: 30px !important;
+	background: #742e68;
+}
+
+ul.CTAs {
+	padding: 20px;
+}
+
+ul.CTAs a {
+	text-align: center;
+	font-size: 0.9em !important;
+	display: block;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+
+a.download {
+	background: #fff;
+	color: #742e68;
+}
+
+a.article,
+a.article:hover {
+	background: #742e68 !important;
+	color: #fff !important;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+	width: 100%;
+	padding: 20px;
+	min-height: 100vh;
+	transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+	#sidebar {
+		margin-left: -250px;
+	}
+
+	#sidebar.active {
+		margin-left: 0;
+	}
+
+	#sidebarCollapse span {
+		display: none;
+	}
+}
+
+
+/* My design CSS */
+.Myh1 {
+	color: white;
+}
+
+.MyAdminH1{
+	color: white;
+	background: #1b6d85;
+}
+
+.Mycontainer {
+	margin-top: 40px;
+	background-color: #88499C;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Mycontainer:before,
+.Mycontainer:after {
+	display: table;
+	content: " ";
+}
+
+.Mycontainer:after {
+	clear: both;
+}
+
+@media (min-width: 768px) {
+	.Mycontainer {
+		width: 750px;
+	}
+}
+
+@media (min-width: 768px) {
+	.Mycontainer {
+		width: 750px;
+	}
+}
+
+@media (min-width: 992px) {
+	.Mycontainer {
+		width: 970px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.Mycontainer {
+		width: 1170px;
+	}
+}
+
+.imgcard {
+	background-color: #88499C;
+}
+
+.imgcard p {
+	text-align: center;
+	color: white;
+}
+
+.imgSize{
+	width: 50%;
+	height: 50%;
+	display: table-cell;
+}
+
+
+
+/* Table CSS */
+table {
+	margin-top:20px;
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	padding: 0;
+	width: 100%;
+	table-layout: fixed;
+}
+
+table caption {
+	font-size: 1.5em;
+	margin: .5em 0 .75em;
+}
+
+table tr {
+	background-color: #f8f8f8;
+	border: 1px solid #ddd;
+	padding: .35em;
+}
+
+table th,
+table td {
+	padding: .625em;
+	text-align: center;
+}
+
+table th {
+	font-size: .85em;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+	table {
+		border: 0;
+	}
+
+	table caption {
+		font-size: 1.3em;
+	}
+
+	table thead {
+		border: none;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+	}
+
+	table tr {
+		border-bottom: 3px solid #ddd;
+		display: block;
+		margin-bottom: .625em;
+	}
+
+	table td {
+		border-bottom: 1px solid #ddd;
+		display: block;
+		font-size: .8em;
+		text-align: right;
+	}
+
+	table td::before {
+		/*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+		content: attr(data-label);
+		float: left;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	table td:last-child {
+		border-bottom: 0;
+	}
+}
+
+.listStyle {
+	font-family: verdana, arial, sans-serif;
+	font-size: 20px;
+	color: #A6E1EC;
+	border-width: 1px;
+	border-color: #3276B1;
+}
+
+.MyListStyle li {
+	display: inline;
+	float: left;
+}
+
+.MyListStyle a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.MyListStyle {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+.MyListStyle a:hover {
+	background-color: #111;
+}
+
+div.imgdiv {
+	margin: 0 auto;
+	width: 80%;
+	height: auto;
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	margin-bottom: 25px;
+}
+
+/* Footer Container CSS */
+.Footercontainer {
+	margin-top: 30px;
+	background-color: black;
+}
+
+.Footercontainer a {
+	display: block;
+	text-align: center;
+	margin-right: 30px;
+	font-family: "arial";
+	color: white;
+	font-size: 1.5em;
+}
+
+.Footercontainer p {
+	text-align: center;
+	font-family: "arial";
+	color: white;
+	font-size: 1.5em;
+}
+
+
