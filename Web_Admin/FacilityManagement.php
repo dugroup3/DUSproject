@@ -85,7 +85,7 @@
                 </td>
                 <td data-label='Modify'>
                     <?php echo "<a href='EditGame.php?GameID=$GameID'><input type='button' class='btn btn-default' value='Edit'></a>" ?>
-                    <?php echo "<a href='DeleteGame.php?GameID=$GameID' onclick='return del()' style='margin-left: 10px'><input type='button' class='btn btn-danger' value='Delete'></a>" ?>
+                    <?php echo "<a href='DeleteFacility.php?FacilityID=$ID' onclick='return del()' style='margin-left: 10px'><input type='button' class='btn btn-danger' value='Delete'></a>" ?>
                 </td>
                 <?php
                 echo "</tr>";
@@ -107,6 +107,15 @@
     $(function () {
         $(".footerpage").load("footer.html");
     });
+    //delete button method.
+    function del() {
+        var msg = "ARE YOU SURE DELETE THIS FACILITY？\n\nPLEASE CONFIRM！";
+        if (confirm(msg)==true){
+            return true;
+        }else{
+            return false;
+        }
+    }
 </script>
 </html>
 

@@ -67,4 +67,14 @@ function getFacilityList()
     $dbh = null;
     return $rows;
 }
+
+//Delete Facility
+function DeleteGame($FacilityID)
+{
+    $dbh = connectDBPDO();
+    $sql = "DELETE FROM `Facility` WHERE `FacilityID`=$FacilityID";
+    $statement = $dbh->query($sql);
+    $dbh = null;
+    return $statement;
+}
 ?>
