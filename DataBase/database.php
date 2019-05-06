@@ -46,4 +46,14 @@ function getStaffList()
     return $rows;
 }
 
+//Add Game
+function AddFacility($FacilityName, $Opentime, $CloseTime, $Description, $Capacity, $Picture, $Prices)
+{
+    $dbh = connectDBPDO();
+    $sql = "INSERT INTO `Facility`(`Name`, `Opentime`, `Closetime`, `Description`, `Capacity`, `Picture`, `Prices`,`Status`) 
+           VALUES ('$FacilityName','$Opentime','$CloseTime','$Description','$Capacity','$Picture','$Prices','0')";
+    $statement = $dbh->query($sql);
+    $dbh = null;
+    return $statement;
+}
 ?>
