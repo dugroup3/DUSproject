@@ -35,17 +35,31 @@
         <table>
             <thead>
             <tr>
-                <th scope="col">Rank</th>
-                <th scope="col">GameID</th>
-                <th scope="col">GameName</th>
-                <th scope="col">Number of Players</th>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
             </tr>
             </thead>
             <tbody>
-            <td>sadaf</td>
-            <td>sadaf</td>
-            <td>sadaf</td>
-            <td>sadaf</td>
+            <!--     Test Database connection   -->
+            <?php
+            require_once '../DataBase/database.php';
+            try {
+                $rows = getStaffList();
+                $data_count = count($rows);
+                for ($i = 0; $i < $data_count; $i++) {
+
+                    $ID = $rows[$i]['id'];
+                    $Name = $rows[$i]['name'];
+                    echo "<tr>
+                    <td data-label='ID'>$ID</td>
+                    <td data-label='Name'> $Name</td>
+                    </tr>";
+
+                }
+            } catch (PDOException $e) {
+                die ("Error!: " . $e->getMessage() . "<br/>");
+            }
+            ?>
             </tbody>
         </table>
     </div>

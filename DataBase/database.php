@@ -9,13 +9,13 @@
 function connectDBPDO()
 {
     $dbms = 'mysql';     //Data base type
-    $dbName = 'Iccnn23_Project';
+    $dbName = 'dbtest';
 //    $host = 'mysql.dur.ac.uk';
 //    $user = 'ccnn23';
 //    $pass = 'r35udder';
-    $host = 'localhost';
+    $host = 'dbtest.ce12oaotat2e.eu-west-2.rds.amazonaws.com';
     $user = 'root';
-    $pass = 'root';
+    $pass = '12341234';
 
     $dsn = "$dbms:host=$host;dbname=$dbName";
     $dbh = new PDO($dsn, $user, $pass, array(PDO::ATTR_PERSISTENT => true));
@@ -39,11 +39,11 @@ function checkAdmin()
 }
 
 
-//Get the Whole User List
-function getUsersList()
+//Get the staff List
+function getStaffList()
 {
     $dbh = connectDBPDO();
-    $sql = "SELECT * FROM Users";
+    $sql = "SELECT * FROM staff";
     $statement = $dbh->query($sql);
     $rows = $statement->fetchALL(PDO::FETCH_ASSOC);
     $dbh = null;
