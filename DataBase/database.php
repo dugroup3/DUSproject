@@ -88,4 +88,24 @@ function SelectFacility($FacilityID)
     $dbh = null;
     return $rows;
 }
+
+//Update Facility info without piture
+function EditFacilityInfo($FacilityID, $FacilityName, $Opentime, $CloseTime, $Description, $Capacity, $Prices)
+{
+    $dbh = connectDBPDO();
+    $sql = "UPDATE `Facility` SET `Name`='$FacilityName',`Opentime`='$Opentime',`Closetime`='$CloseTime',`Description`='$Description',`Capacity`='$Capacity',`Prices`='$Prices' WHERE FacilityID=$FacilityID";
+    $statement = $dbh->query($sql);
+    $dbh = null;
+    return $statement;
+}
+
+//Update Facility info with piture
+function UpdateFacilityInfo($FacilityID, $FacilityName, $Opentime, $CloseTime, $Description, $Capacity, $Picture, $Prices)
+{
+    $dbh = connectDBPDO();
+    $sql = "UPDATE `Facility` SET `Name`='$FacilityName',`Opentime`='$Opentime',`Closetime`='$CloseTime',`Description`='$Description',`Capacity`='$Capacity',`Picture`='$Picture',`Prices`='$Prices' WHERE FacilityID=$FacilityID";
+    $statement = $dbh->query($sql);
+    $dbh = null;
+    return $statement;
+}
 ?>

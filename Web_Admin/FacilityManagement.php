@@ -84,7 +84,7 @@
                     ?>
                 </td>
                 <td data-label='Modify'>
-                    <?php echo "<a href='EditGame.php?GameID=$GameID'><input type='button' class='btn btn-default' value='Edit'></a>" ?>
+                    <?php echo "<a href='EditFacility.php?FacilityID=$ID'><input type='button' class='btn btn-default' value='Edit'></a>" ?>
                     <?php echo "<a href='DeleteFacility.php?FacilityID=$ID' onclick='return del()' style='margin-left: 10px'><input type='button' class='btn btn-danger' value='Delete'></a>" ?>
                 </td>
                 <?php
