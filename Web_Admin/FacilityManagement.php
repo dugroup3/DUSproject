@@ -44,7 +44,7 @@
         </tr>
         </thead>
         <tbody>
-        <!-- Show the Game List       -->
+        <!-- Show Facility List       -->
         <?php
         try {
             $rows = getFacilityList();

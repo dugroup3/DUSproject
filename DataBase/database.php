@@ -77,4 +77,15 @@ function DeleteGame($FacilityID)
     $dbh = null;
     return $statement;
 }
+
+//Select facility by id
+function SelectFacility($FacilityID)
+{
+    $dbh = connectDBPDO();
+    $sql = "SELECT * FROM `Facility` WHERE `FacilityID`=$FacilityID";
+    $statement = $dbh->query($sql);
+    $rows = $statement->fetch(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $rows;
+}
 ?>
