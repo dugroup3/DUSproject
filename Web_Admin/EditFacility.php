@@ -79,7 +79,7 @@ if (!empty($_GET['FacilityID'])) {
             <label for="Picturebox" class="col-sm-2 control-label">Picture:</label>
             <div class="col-sm-10">
                 <img src="../public/img/<?php echo $rows['Picture'] ?>" style="height: 100px;height: 100px">
-                <input id="file-selector" type="file" class="form-control" id="Picturebox" name="Fimage">
+                <input type="file" class="form-control" id="Picturebox" name="Fimage">
             </div>
         </div>
         <div class="form-group">
@@ -169,7 +169,7 @@ if (!empty($_GET['FacilityID'])) {
     });
 
     //Show the preview photo
-    $('#file-selector').change(function () {
+    $('#Picturebox').change(function () {
         var $file = $(this);
         var fileObj = $file[0];
         var windowURL = window.URL || window.webkitURL;

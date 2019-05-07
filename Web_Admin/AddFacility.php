@@ -11,18 +11,6 @@ if (isset($_POST['add-facility'])) {
     $tmp_dir = $_FILES['Fimage']['tmp_name'];
     $imgSize = $_FILES['Fimage']['size'];
 
-//    echo $FacilityName."<br>";
-//    echo $OpenTime."<br>";
-//    echo $CloseTime."<br>";
-//    echo $Description."<br>";
-//    echo $Capacity."<br>";
-//    echo $Prices."<br>";
-//    echo $imgFile."<br>";
-//    echo $tmp_dir."<br>";
-//    echo $imgSize."<br>";
-//    die();
-
-
     if (empty($FacilityName)) {
         die("Please Enter FacilityName.");
     } else if (empty($OpenTime)) {
@@ -127,6 +115,7 @@ if (isset($_POST['add-facility'])) {
         <div class="form-group">
             <label for="Picturebox" class="col-sm-2 control-label">Picture:</label>
             <div class="col-sm-10">
+                <img src="" style="height: 100px;height: 100px">
                 <input type="file" class="form-control" id="Picturebox" name="Fimage">
             </div>
         </div>
@@ -150,6 +139,24 @@ if (isset($_POST['add-facility'])) {
 <script>
     $(function () {
         $(".footerpage").load("footer.html");
+    });
+
+    //Show the preview photo
+    $('#Picturebox').change(function () {
+        var $file = $(this);
+        var fileObj = $file[0];
+        var windowURL = window.URL || window.webkitURL;
+        var dataURL;
+        var $img = $("img");
+        if (fileObj && fileObj.files && fileObj.files[0]) {
+            dataURL = windowURL.createObjectURL(fileObj.files[0]);
+            $img.attr('src', dataURL);
+        } else {
+            dataURL = $file.val();
+            var imgObj = document.getElementById("preview");
+            imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+            imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
+        }
     });
 </script>
 </html>
