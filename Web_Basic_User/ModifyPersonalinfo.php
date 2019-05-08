@@ -83,7 +83,6 @@ if (!empty($_GET['Username'])) {
             $lastName = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING);
             $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);
 
-            echo $Username;
             if (empty($firstName)) {
                 die("FirstName not define!!");
             }
