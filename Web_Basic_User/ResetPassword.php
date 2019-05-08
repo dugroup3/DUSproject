@@ -1,42 +1,3 @@
-<?php
-require_once '../DataBase/database.php';
-session_start();
-if (isset($_POST['reset-password'])) {
-    //get the post data from the submit form.
-    $code = $_POST['emailcode'];
-    $password = $_POST['password'];
-    $Comparecode = $_SESSION['code'];
-    $username = $_SESSION['email'];
-
-    if(empty($code)){
-        die("Code not define!!");
-    }
-    if(empty($password)){
-        die("New Password not define!!");
-    }
-    if(empty($username)){
-        die("Session out of date please try again!!");
-    }
-
-    //Hash the password.
-    $salt = "shuaige";
-    $password_hash = $password . $salt;
-    $password_hash = password_hash($password_hash, PASSWORD_DEFAULT);
-
-    if($code==$Comparecode){
-        // if no error occured, continue ....
-        $statement = ResetPassword($username,$password_hash);
-        if ($statement) {
-            echo "<script>alert('Reset password success!');location.href='LoginPage.php';</script>";
-        } else {
-            echo "<script>alert('Reset fail, please try again');location.href='ForgetPasswordPage.php';</script>";
-        }
-
-    }
-
-
-}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,6 +62,44 @@ if (isset($_POST['reset-password'])) {
             </div>
         </form>
         <!--Form End-->
+        <!--        Once the form has been submit-->
+        <?php
+        require_once '../DataBase/database.php';
+        if (isset($_POST['reset-password'])) {
+            //get the post data from the submit form.
+            $code = $_POST['emailcode'];
+            $password = $_POST['password'];
+            $Comparecode = $_SESSION['code'];
+            $username = $_SESSION['email'];
+
+            if (empty($code)) {
+                die("Code not define!!");
+            }
+            if (empty($password)) {
+                die("New Password not define!!");
+            }
+            if (empty($username)) {
+                die("Session out of date please try again!!");
+            }
+
+            //Hash the password.
+            $salt = "shuaige";
+            $password_hash = $password . $salt;
+            $password_hash = password_hash($password_hash, PASSWORD_DEFAULT);
+
+            if ($code == $Comparecode) {
+                // if no error occured, continue ....
+                $statement = ResetPassword($username, $password_hash);
+                if ($statement) {
+                    echo "<script>alert('Reset password success!');location.href='LoginPage.php';</script>";
+                } else {
+                    echo "<script>alert('Reset fail, please try again');location.href='ForgetPasswordPage.php';</script>";
+                }
+
+            }
+        }
+        ?>
+        <!--        end-->
     </div>
 </div>
 </body>
