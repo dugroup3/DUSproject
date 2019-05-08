@@ -23,7 +23,7 @@
     <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <button type="button" id="getAll" class="btn btn-success">Search all members</button>
+                <button type="button" id="getAll" class="btn btn-success">Search all Facilities</button>
                     <div class="card-tools">
                         <div class="input-group input-group-sm">
                             <input type="text" class="form-control" id="searchInput" placeholder="Facility name">
@@ -37,13 +37,15 @@
         <div class="card-body">
             <table width="960"  border="1">
                 <table class="table table-bordered">
+                    <thead>
                     <tr>
-                        <th scope="row"> Facility name</th>
-                        <th>Picture</th>
-                        <th>Time</th>
-                        <th>Description</th>
-                        <th>Price</th>
+                        <th scope="col"> Facility name</th>
+                        <th scope="col">Picture</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Price</th>
                     </tr>
+                    </thead>
                     <tbody id='tbody'>
                     </tbody>
                 </table>
@@ -112,11 +114,19 @@
             data.forEach(function (data, index, array) {
                 html += `
                         <tr>
+<<<<<<< HEAD
                             <td scope="row"> ${data.Name}</td>
                             <td><img src= "${data.Picture}" height="100vw" width="100vw" alt=""></td>
                             <td>${data.Opentime}&nbsp To &nbsp${data.Closetime}</td>
                             <td>${data.Description}</td>
                             <td>${data.Prices}</td>
+=======
+                            <td data-label='Facility Name'> ${data.Name}</td>
+                            <td data-label='Picture'><img src= "${data.Picture}" height="150" width="150" alt=""></td>
+                            <td data-label='Working time'>${data.Opentime}&nbsp To &nbsp${data.Closetime}</td>
+                            <td data-label='Description'>${data.Description}</td>
+                            <td data-label='Prices'>${data.Prices}</td>
+>>>>>>> origin/master
                         </tr>`
             })
             $('#tbody').html(html);
