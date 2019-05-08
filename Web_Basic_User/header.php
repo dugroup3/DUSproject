@@ -17,7 +17,7 @@
                 <a href="index.php">Home</a>
             </li>
             <li>
-                <a href="#">Facility</a>
+                <a href="SearchFacility.php">Facility</a>
             </li>
             <li>
                 <a href="LoginPage.php">Login</a>
