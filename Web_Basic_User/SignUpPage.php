@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>test</title>
+    <title>SignUpPage</title>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -31,13 +31,13 @@
         </nav>
 
         <h2>Sign Up page</h2>
-<!--        Form Start-->
+        <!--        Form Start-->
         <form class="form-horizontal" role="form" action="signup.php" onsubmit="return check_form()" method="post">
             <div class="form-group">
                 <label for="usernameText" class="col-sm-2 control-label">UserName:</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="usernameText" name="userName"
-                           placeholder="Please input your UserName">
+                           placeholder="Please input your Email address">
                 </div>
             </div>
             <div class="form-group">
@@ -69,12 +69,29 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="phoneText" class="col-sm-2 control-label">Phone number:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="phoneText" name="phone"
+                           placeholder="Please input your Phone number">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="role" class="col-sm-2 control-label">Identity:</label>
+                <div class="col-sm-10">
+                    <input type="radio" id="public" name="role" value="Public">Public &nbsp&nbsp&nbsp
+                    <input type="radio" id="student" name="role" value="Student">Student &nbsp&nbsp&nbsp
+                    <input type="radio" id="staff" name="role" value="Staff">Staff &nbsp&nbsp&nbsp
+                    <input type="radio" id="trainer" name="role" value="Trainer">Trainer
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <input type="submit" class="btn btn-primary" value="Register">
                 </div>
             </div>
         </form>
-<!--Form End-->
+        <!--Form End-->
     </div>
 </div>
 </body>

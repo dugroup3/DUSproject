@@ -2,7 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: jiangchiying
- * Date: 2019-03-11
+ * Date: 2019-05-06
  * Time: 14:55
  * Check the Login
  */
@@ -25,10 +25,10 @@ $salt = "shuaige";
 $password = $password . $salt;
 try {
     $dbh = connectDBPDO();
-    $sql = "SELECT * FROM `Users` WHERE userName='$username'";
+    $sql = "SELECT * FROM `User` WHERE Username='$username'";
     $statement = $dbh->query($sql);
     $User = $statement->fetch(PDO::FETCH_ASSOC);
-    $hash = $User['password'];
+    $hash = $User['Password'];
     if (password_verify($password, $hash)) {
         header("refresh:0;url=index.php");
         session_start();
