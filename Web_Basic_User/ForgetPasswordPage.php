@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>test</title>
+    <title>Password Recovery Page</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -32,7 +32,7 @@
         </nav>
 
         <h2>Password Recovery Page</h2>
-        <form class="form-horizontal" role="form" action="#" onsubmit="return check_Login_form()"
+        <form class="form-horizontal" role="form" action="Sent_email_FPW.php" onsubmit="return check_Login_form()"
               method="post">
             <div class="form-group">
                 <label for="UsernameText" class="col-sm-2 control-label">User Name:</label>

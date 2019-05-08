@@ -108,4 +108,14 @@ function UpdateFacilityInfo($FacilityID, $FacilityName, $Opentime, $CloseTime, $
     $dbh = null;
     return $statement;
 }
+
+//Reset password
+function ResetPassword($Username,$Password)
+{
+    $dbh = connectDBPDO();
+    $sql = "UPDATE `User` SET `Password`='$Password' WHERE Username='$Username'";
+    $statement = $dbh->query($sql);
+    $dbh = null;
+    return $statement;
+}
 ?>
