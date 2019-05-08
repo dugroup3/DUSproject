@@ -31,36 +31,33 @@
             </div>
         </nav>
         <h2>Your Personal Information</h2>
-        <table>
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!--     Test Database connection   -->
-            <?php
-            require_once '../DataBase/database.php';
-            try {
-                $rows = getStaffList();
-                $data_count = count($rows);
-                for ($i = 0; $i < $data_count; $i++) {
+        <div style="margin-top: 20px">
+            <ul>
+                <?php
+                require_once '../DataBase/database.php';
+                $Username = $_SESSION['User']['Username'];
+                try {
+                    $rows = SelectAuser($Username);
+                    $Username = $rows['Username'];
+                    $Firstname = $rows['Firstname'];
+                    $Lastname = $rows['Lastname'];
+                    $Phone = $rows['Phone'];
+                    $hidephone =  + substr($Phone, 0,3)."****".substr($Phone,7,3);
+                    echo "<h4 style='margin-top: 20px'>Email : </h4><li>$Username</li>";
+                    echo "<h4 style='margin-top: 20px'>Your name : </h4><li style='text-transform: uppercase'>$Firstname $Lastname</li>";
+                    echo "<h4 style='margin-top: 20px'>Your Phone Num : </h4><li>$hidephone</li>";
 
-                    $ID = $rows[$i]['id'];
-                    $Name = $rows[$i]['name'];
-                    echo "<tr>
-                    <td data-label='ID'>$ID</td>
-                    <td data-label='Name'> $Name</td>
-                    </tr>";
-
+                } catch (PDOException $e) {
+                    die ("Error!: " . $e->getMessage() . "<br/>");
                 }
-            } catch (PDOException $e) {
-                die ("Error!: " . $e->getMessage() . "<br/>");
-            }
-            ?>
-            </tbody>
-        </table>
+                ?>
+            </ul>
+            <div class="col-sm-offset-2 col-sm-10">
+                <a href="#">
+                    <button class="btn btn-primary">Modify your personal information</button>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 </body>

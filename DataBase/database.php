@@ -118,4 +118,15 @@ function ResetPassword($Username,$Password)
     $dbh = null;
     return $statement;
 }
+
+//Seletct A User
+function SelectAuser($Username)
+{
+    $dbh = connectDBPDO();
+    $sql = "SELECT * FROM `User` WHERE Username='$Username'";
+    $statement = $dbh->query($sql);
+    $rows = $statement->fetch(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $rows;
+}
 ?>
