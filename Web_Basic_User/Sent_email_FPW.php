@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 require_once('email.class.php');
 
 $email = $_POST['userName'];
@@ -15,6 +15,7 @@ foreach ($arr as $v) {
 
 $_SESSION['code'] = $res;
 $_SESSION['email']=$email;
+
 //##########################################
 $smtpserver = "smtp.163.com";//SMTP Server
 $smtpserverport = 25;//SMTP Server port
