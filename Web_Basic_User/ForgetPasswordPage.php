@@ -13,7 +13,6 @@
     <link href="../public/css/style.css" rel="stylesheet">
     <!--JS-->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src="../public/js/script.js"></script>
 </head>
 <body>
 <!-- Page Content  -->
@@ -32,8 +31,8 @@
             </div>
         </nav>
 
-        <h2>Login page</h2>
-        <form class="form-horizontal" role="form" action="Login_verify.php" onsubmit="return check_Login_form()"
+        <h2>Password Recovery Page</h2>
+        <form class="form-horizontal" role="form" action="#" onsubmit="return check_Login_form()"
               method="post">
             <div class="form-group">
                 <label for="UsernameText" class="col-sm-2 control-label">User Name:</label>
@@ -43,23 +42,11 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="passwordText" class="col-sm-2 control-label">PassWord:</label>
-                <div class="col-sm-10">
-                    <input type="password" class="form-control" id="passwordText" name="password"
-                           placeholder="Please input your Password">
-                </div>
-            </div>
-            <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <input type="submit" class="btn btn-primary" value="Login">
+                    <input type="submit" class="btn btn-primary" value="Submit">
                 </div>
             </div>
         </form>
-        <div class="col-sm-offset-2 col-sm-10">
-            <a href="ForgetPasswordPage.php">
-                <button class="btn btn-danger">Forget Password?</button>
-            </a>
-        </div>
     </div>
 </div>
 </body>
