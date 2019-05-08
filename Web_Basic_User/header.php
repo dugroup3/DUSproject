@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!-- Sidebar  -->
     <nav id="sidebar">
         <div class="sidebar-header">
@@ -19,12 +22,29 @@
             <li>
                 <a href="SearchFacility.php">Facility</a>
             </li>
-            <li>
-                <a href="LoginPage.php">Login</a>
-            </li>
-            <li>
-                <a href="SignUpPage.php">Sign Up</a>
-            </li>
+            <!--    Check whether the user login            -->
+            <?php
+            if (!empty($_SESSION['User'])) {
+                echo "<li class='active'>" ."<a href='#Personalinfo' data-toggle='collapse' aria-expanded='false' class='dropdown-toggle'>"."Welcome  ". $_SESSION['User']['Firstname'] ."</a>". "</li>";
+                echo "<ul class='collapse list-unstyled' id='Personalinfo'>";
+                echo "<li class='cative'><a href='#'>Personal information</a></li>";
+                echo "<li class='cative'><a href='logout.php'>Logout</a></li>";
+                echo "</ul>";
+            } else {
+                echo "<li class='cative'>
+                    <a href='LoginPage.php'>Login</a>
+                </li>
+                <li class='cative'>
+                    <a href='SignUpPage.php'>Sign Up</a>
+                </li>";
+            }
+            ?>
+            <!--   Check the role of the user             -->
+            <?php
+            if(!empty($_SESSION['User'])&&$_SESSION['User']['role']=='Student'){
+                echo "<li class='cative'><a href='../Web_Admin/index.php'>Admin Page</a></li>";
+            }
+            ?>
             <li>
                 <a href="#">About</a>
             </li>
