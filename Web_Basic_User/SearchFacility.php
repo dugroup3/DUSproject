@@ -114,11 +114,19 @@
             data.forEach(function (data, index, array) {
                 html += `
                         <tr>
+<<<<<<< HEAD
+                            <td scope="row"> ${data.Name}</td>
+                            <td><img src= "${data.Picture}" height="100vw" width="100vw" alt=""></td>
+                            <td>${data.Opentime}&nbsp To &nbsp${data.Closetime}</td>
+                            <td>${data.Description}</td>
+                            <td>${data.Prices}</td>
+=======
                             <td data-label='Facility Name'> ${data.Name}</td>
                             <td data-label='Picture'><img src= "${data.Picture}" height="150" width="150" alt=""></td>
                             <td data-label='Working time'>${data.Opentime}&nbsp To &nbsp${data.Closetime}</td>
                             <td data-label='Description'>${data.Description}</td>
                             <td data-label='Prices'>${data.Prices}</td>
+>>>>>>> origin/master
                         </tr>`
             })
             $('#tbody').html(html);
