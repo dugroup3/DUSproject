@@ -53,7 +53,7 @@
                 ?>
             </ul>
             <div class="col-sm-offset-2 col-sm-10">
-                <a href="#">
+                <?php echo"<a href='ModifyPersonalinfo.php?Username=$Username'>"?>
                     <button class="btn btn-primary">Modify your personal information</button>
                 </a>
             </div>

@@ -129,4 +129,14 @@ function SelectAuser($Username)
     $dbh = null;
     return $rows;
 }
+
+//Updata User Information
+function UpdateUserInfo($Username,$Firstname,$Lastname,$Phone)
+{
+    $dbh = connectDBPDO();
+    $sql = "UPDATE `User` SET `Firstname`='$Firstname',`Lastname`='$Lastname',`Phone`='$Phone' WHERE Username='$Username'";
+    $statement = $dbh->query($sql);
+    $dbh = null;
+    return $statement;
+}
 ?>
