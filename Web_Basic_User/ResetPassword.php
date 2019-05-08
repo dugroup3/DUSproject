@@ -1,6 +1,6 @@
 <?php
 require_once '../DataBase/database.php';
-session_start();
+//session_start();
 if (isset($_POST['reset-password'])) {
     //get the post data from the submit form.
     $code = $_POST['emailcode'];

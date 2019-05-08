@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 require_once('email.class.php');
 
 $email = $_POST['userName'];
