@@ -5,9 +5,11 @@ function check_form() {
     var confirm_password = document.getElementById("Confirm_passwordText").value;
     var Firstname = document.getElementById("firstNameText").value;
     var lastname = document.getElementById("lastNameText").value;
+    var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //Verify the email address
 
-    if (!/^[a-zA-Z]/.test(username)) {
-        alert("Please input the user name, Start with a-z or A-Z!!");
+
+    if (!reg.test(username)) {
+        alert("Please input the Your Email Address as username!!");
         return false;
     }
     if (password.length == 0) {
@@ -32,11 +34,12 @@ function check_form() {
 
 //Check Login Form
 function check_Login_form() {
+
     var username = document.getElementById("UsernameText").value;
     var password = document.getElementById("passwordText").value;
-
-    if (!/^[a-zA-Z]/.test(username)) {
-        alert("Please input the user name!");
+    var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //Verify the email address
+    if (!reg.test(username)) {
+        alert("Please input the user email address!");
         return false;
     }
     if (password.length == 0) {
