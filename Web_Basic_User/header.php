@@ -41,7 +41,7 @@ session_start();
             ?>
             <!--   Check the role of the user             -->
             <?php
-            if(!empty($_SESSION['User'])&&$_SESSION['User']['role']=='Student'){
+            if(!empty($_SESSION['User'])&&$_SESSION['User']['Role']=="Admin"){
                 echo "<li class='cative'><a href='../Web_Admin/index.php'>Admin Page</a></li>";
             }
             ?>

@@ -13,6 +13,7 @@
     <link href="../public/css/style.css" rel="stylesheet">
     <!--JS-->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="../public/js/script.js"></script>
 </head>
 <body>
 <!-- Page Content  -->
@@ -32,7 +33,8 @@
         </nav>
 
         <h2>Login page</h2>
-        <form class="form-horizontal" role="form" action="Login_verify.php" onsubmit="return check_Login_form()" method="post">
+        <form class="form-horizontal" role="form" action="Login_verify.php" onsubmit="return check_Login_form()"
+              method="post">
             <div class="form-group">
                 <label for="UsernameText" class="col-sm-2 control-label">User Name:</label>
                 <div class="col-sm-10">
@@ -53,6 +55,11 @@
                 </div>
             </div>
         </form>
+        <div class="col-sm-offset-2 col-sm-10">
+            <a href="#">
+                <button class="btn btn-danger">Forget Password?</button>
+            </a>
+        </div>
     </div>
 </div>
 </body>
@@ -61,5 +68,6 @@
     $(function () {
         $(".footerpage").load("footer.html");
     });
+
 </script>
 </html>

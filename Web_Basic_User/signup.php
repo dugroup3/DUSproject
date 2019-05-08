@@ -30,7 +30,6 @@ if (empty($role)) {
     die("Role not define.");
 }
 
-
 $salt = "shuaige";
 $password_hash = $password . $salt;
 $password_hash = password_hash($password_hash, PASSWORD_DEFAULT);
