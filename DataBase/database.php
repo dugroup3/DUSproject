@@ -140,5 +140,35 @@ function UpdateUserInfo($Username,$Firstname,$Lastname,$Phone)
     return $statement;
 }
 
+//Find the facility ID
+function FindFacilityID($FacilityName)
+{
+    $dbh = connectDBPDO();
+    $sql = "SELECT * FROM `Facility` WHERE Name='$FacilityName'";
+    $statement = $dbh->query($sql);
+    $rows = $statement->fetch(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $rows;
+}
 
+//Add Booking
+function AddBooking($FacilityID, $UserID, $Starttime, $Endtime, $Totalcost)
+{
+    $dbh = connectDBPDO();
+    $sql = "INSERT INTO `Booking`(`FacilityID`, `UserID`, `Starttime`, `Endtime`, `Totalcost`) 
+           VALUES ('$FacilityID','$UserID','$Starttime','$Endtime','$Totalcost')";
+    $statement = $dbh->query($sql);
+    $dbh = null;
+    return $statement;
+}
+
+//Check whether the booking meet the  capacity
+function CheckBooking($StartTime,$Endtime){
+    $dbh = connectDBPDO();
+    $sql = "SELECT COUNT(BookingID) as num FROM Booking WHERE Starttime>='$StartTime' AND Endtime<='$Endtime'";
+    $statement = $dbh->query($sql);
+    $rows = $statement->fetch(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $rows;
+}
 ?>

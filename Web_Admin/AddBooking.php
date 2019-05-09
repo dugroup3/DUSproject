@@ -23,7 +23,22 @@
 </div>
 
 <div class="Mycontainer" style="background: white">
-    <form id="add-facility-form" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+    <a>
+        <button class="btn btn-danger FacilityList-btn">Check the Facility Prices</button>
+    </a>
+
+    <div id="FacilityDiv" class="Mycontainer" style="background: white; display:none; margin-bottom: 30px">
+        <table id='FacilityList'>
+            <thead>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <form id="add-facility-form" class="form-horizontal" action="AddBookingAction.php" role="form" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="FacilityNameText" class="col-sm-2 control-label">Facility Name:</label>
             <div class="col-sm-10">
@@ -49,14 +64,14 @@
         <div class="form-group">
             <label for="StartTimeText" class="col-sm-2 control-label">Booking Start Time:</label>
             <div class="col-sm-10">
-                <input type="time" class="form-control" id="StartTimeText" name="StartTime"
+                <input type="datetime-local" class="form-control" id="StartTimeText" name="StartTime"
                        placeholder="Please input the Start Time">
             </div>
         </div>
         <div class="form-group">
             <label for="EndTimeText" class="col-sm-2 control-label">Booking End Time:</label>
             <div class="col-sm-10">
-                <input type="time" class="form-control" id="EndTimeText" name="EndTime"
+                <input type="datetime-local" class="form-control" id="EndTimeText" name="EndTime"
                        placeholder="Please input the End Time">
             </div>
         </div>
