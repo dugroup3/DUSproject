@@ -21,7 +21,7 @@
     <h1 class="MyAdminH1">Admin Page</h1>
 </div>
 <div class="Mycontainer" style="background: black">
-    <p>Welcome black <?php echo $_SESSION['User']['userName'] ?></p>
+    <p>Welcome black <?php echo $_SESSION['User']['Firstname'] ?></p>
 </div>
 </body>
 <div class="footerpage">

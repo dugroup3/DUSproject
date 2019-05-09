@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default  navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
@@ -18,7 +18,7 @@
                     <a class="nav-a" href="FacilityManagement.php">Facility Management</a>
                 </li>
                 <li class="cative">
-                    <a class="nav-a" href="#">Booking Management</a>
+                    <a class="nav-a" href="BookingManagement.php">Booking Management</a>
                 </li>
                 <li class="cative">
                     <a class="nav-a" href="#">Classes</a>
