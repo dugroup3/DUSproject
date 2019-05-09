@@ -12,7 +12,7 @@ $imgname = $result['Picture'];
 $imgname = "../public/img/".$imgname;
 if (!empty($id)) {
     //Delete the Facility information from database
-    $statement=DeleteGame($id);
+    $statement=DeleteFacility($id);
     //Delete the photo from local file.
     unlink($imgname);
     if($statement){

@@ -42,6 +42,46 @@
         </thead>
         <tbody>
         <!-- Show Booking List       -->
+        <?php
+        try {
+            $rows = GetBookingList();
+            $data_count = count($rows);
+            for ($i = 0; $i < $data_count; $i++) {
+                $BookingID = $rows[$i]['BookingID'];
+                $FacilityID = $rows[$i]['FacilityID'];
+                $UserID = $rows[$i]['UserID'];
+                $Starttime = $rows[$i]['Starttime'];
+                $Endtime = $rows[$i]['Endtime'];
+                $Prices = $rows[$i]['Totalcost'];
+
+                //Get Facility Name
+                $FacilityName = SelectFacility($FacilityID);
+                $FacilityName = $FacilityName['Name'];
+
+                //Get User Name
+                $UserName = SelectUserByID($UserID);
+                $UserName = $UserName['Username'];
+
+
+                echo "<tr>
+                    <td data-label='BookingID'>$BookingID</td>
+                    <td data-label='Facility Name'> $FacilityName</td>
+                    <td data-label='User Name'> $UserName</td>
+                    <td data-label='Booking time'><p style='font-size: 15px; color: black'> From:<br>  $Starttime <br> to <br>  $Endtime</p></td>
+                    <td data-label='Total Cost'> £$Prices</td>";
+                ?>
+                <td data-label='Modify'>
+                    <?php echo "<a href='EditBooking.php?BookingID=$BookingID'><input type='button' class='btn btn-default' value='Edit'></a>" ?>
+                    <?php echo "<a href='DeleteBooking.php?BookingID=$BookingID&UserID=$UserID' onclick='return del()' style='margin-left: 10px'><input type='button' class='btn btn-danger' value='Delete'></a>" ?>
+                </td>
+                <?php
+                echo "</tr>";
+
+            }
+        } catch (PDOException $e) {
+            die ("Error!: " . $e->getMessage() . "<br/>");
+        }
+        ?>
 
         </tbody>
     </table>

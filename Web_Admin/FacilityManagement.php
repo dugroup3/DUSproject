@@ -71,7 +71,7 @@
                 </td>
                 <td data-label='Prices'>
                     <?php
-                    echo $Prices;
+                    echo "£".$Prices;
                     ?>
                 </td>
                 <td data-label='Status'>

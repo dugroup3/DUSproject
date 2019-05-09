@@ -69,7 +69,7 @@ function getFacilityList()
 }
 
 //Delete Facility
-function DeleteGame($FacilityID)
+function DeleteFacility($FacilityID)
 {
     $dbh = connectDBPDO();
     $sql = "DELETE FROM `Facility` WHERE `FacilityID`=$FacilityID";
@@ -151,6 +151,7 @@ function FindFacilityID($FacilityName)
     return $rows;
 }
 
+//BOOKING PART
 //Add Booking
 function AddBooking($FacilityID, $UserID, $Starttime, $Endtime, $Totalcost)
 {
@@ -166,6 +167,48 @@ function AddBooking($FacilityID, $UserID, $Starttime, $Endtime, $Totalcost)
 function CheckBooking($StartTime,$Endtime){
     $dbh = connectDBPDO();
     $sql = "SELECT COUNT(BookingID) as num FROM Booking WHERE Starttime>='$StartTime' AND Endtime<='$Endtime'";
+    $statement = $dbh->query($sql);
+    $rows = $statement->fetch(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $rows;
+}
+
+//Get the Booking List
+function GetBookingList(){
+    $dbh = connectDBPDO();
+    $sql = "SELECT * FROM `Booking`";
+    $statement = $dbh->query($sql);
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $rows;
+}
+
+//Select User by id
+function SelectUserByID($UserID)
+{
+    $dbh = connectDBPDO();
+    $sql = "SELECT * FROM `User` WHERE `UserID`=$UserID";
+    $statement = $dbh->query($sql);
+    $rows = $statement->fetch(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $rows;
+}
+
+//Delete Booking
+function DeleteBooking($BookingID)
+{
+    $dbh = connectDBPDO();
+    $sql = "DELETE FROM `Booking` WHERE `BookingID`=$BookingID";
+    $statement = $dbh->query($sql);
+    $dbh = null;
+    return $statement;
+}
+
+//Select Booking by id
+function SelectBookingByID($BookingID)
+{
+    $dbh = connectDBPDO();
+    $sql = "SELECT * FROM `Booking` WHERE `BookingID`=$BookingID";
     $statement = $dbh->query($sql);
     $rows = $statement->fetch(PDO::FETCH_ASSOC);
     $dbh = null;

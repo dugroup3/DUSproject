@@ -46,12 +46,12 @@ if ($rows == 0) {
 
     //2. Check the Capacity
     $Capacity = $Facilityrows['Capacity'];
-    echo $Capacity;
+    //echo $Capacity;
 
     //Get the Total num of Booking
     $BookingCapacity = CheckBooking($StartTime,$EndTime);
     $BookingCapacity = $BookingCapacity['num'];
-    echo $BookingCapacity;
+    //echo $BookingCapacity;
 
     //if have capacity left
     if($BookingCapacity<$Capacity){
@@ -71,7 +71,7 @@ if ($rows == 0) {
             $smtpuser = "dugroup3";//SMTP Server account
             $smtppass = "jcyhlz666";//SMTP Server Password
             $mailsubject = "Booking Confirm";//Email Subject
-            $mailbody = "<h1>Booking Success</h1><p>Your booking time is From $StartTime to $EndTime</p><p>The total prices is £ $Prices</p><p>For More detail https://www.teamdurham.com/</p>";//Email body
+            $mailbody = "<h1>Booking Success</h1><p>Your booking time is From $StartTime to $EndTime in $FacilityName</p><p>The total prices is £ $Prices</p><p>For More detail https://www.teamdurham.com/</p>";//Email body
             $mailtype = "HTML";//邮件格式（HTML/TXT）,TXT为文本邮件
             ##########################################
             $smtp = new smtp($smtpserver, $smtpserverport, true, $smtpuser, $smtppass);
