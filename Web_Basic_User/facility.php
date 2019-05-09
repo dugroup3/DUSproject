@@ -5,10 +5,6 @@ header("content-type:application/json;charset=utf-8");
 $type = addslashes(htmlspecialchars(@$_POST['type']));
 if ($type === 'get') {
     get();
-} else if ($type === 'add') {
-    add();
-}else if($type === 'ld'){
-    ld();
 }
 
 function get()
