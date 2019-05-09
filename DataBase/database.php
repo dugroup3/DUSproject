@@ -214,4 +214,5 @@ function SelectBookingByID($BookingID)
     $dbh = null;
     return $rows;
 }
+
 ?>

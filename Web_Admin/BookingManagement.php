@@ -82,7 +82,6 @@
             die ("Error!: " . $e->getMessage() . "<br/>");
         }
         ?>
-
         </tbody>
     </table>
 </div>

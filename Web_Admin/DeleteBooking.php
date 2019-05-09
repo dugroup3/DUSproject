@@ -49,7 +49,6 @@ if (!empty($Bookingid)) {
     }else{
         echo "<script>alert('Cancel Booking Fail');location.href='BookingManagement.php';</script>";
     }
-
 } else {
     die("Booking id not define");
 }

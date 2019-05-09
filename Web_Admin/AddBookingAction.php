@@ -84,5 +84,4 @@ if ($rows == 0) {
     }else{
         echo "<script>alert('Add Booking Fail!! this booking is exceed the capacity');location.href='AddBooking.php';</script>";
     }
-
 }

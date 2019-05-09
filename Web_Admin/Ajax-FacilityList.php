@@ -8,4 +8,5 @@
 require_once '../DataBase/database.php';
 $rows=getFacilityList();
 echo json_encode($rows);
+
 ?>

@@ -93,6 +93,7 @@
 <div class="footerpage">
 
 </div>
+
 <script>
     $(function () {
         $(".footerpage").load("footer.html");

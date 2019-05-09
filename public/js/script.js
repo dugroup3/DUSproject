@@ -87,6 +87,7 @@ $(document).ready(function () {
     })
 })
 
+
 //show Facilities list
 function got_Facility_data(facility_data) {
     num=facility_data.length;
