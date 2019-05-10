@@ -82,7 +82,7 @@ class smtp
             $this->log_write("Disconnected from remote host\n");
         }
         echo "<br>";
-        //echo $header;
+        echo $header;
         return $sent;
     }
 
