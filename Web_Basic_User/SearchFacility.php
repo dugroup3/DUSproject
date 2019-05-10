@@ -23,12 +23,18 @@
     <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <button type="button" id="getAll" class="btn btn-success">Search all Facilities</button>
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Navigation Bar</span>
+                </button>
                 <div class="card-tools">
+
                     <div class="input-group input-group-sm">
+
                         <input type="text" class="form-control" id="searchInput" placeholder="Facility name">
                         <span class="input-group-append"><button type="button" id="get"
                                                                  class="btn btn-primary">Search</button>
+                            <button type="button" id="getAll" class="btn btn-info">Search all Facilities</button>
                     </div>
                 </div>
 
@@ -43,13 +49,33 @@
                         <th scope="col"> Facility name</th>
                         <th scope="col">Picture</th>
                         <th scope="col">Time</th>
-                        <th scope="col">Description</th>
                         <th scope="col">Price</th>
+                        <th>Operation</th>
                     </tr>
                     </thead>
-                    <tbody id='tbody'>
+                    <tbody id='body'>
                     </tbody>
                 </table>
+        </div>
+        <div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="bookingModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="bookingModalLabel">Detail</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table>
+                        <tbody id='facilityTable'>
+                        </tbody>
+
+                        </table>
+
+                        <div>
+                            <p><input type="button" class="btn btn-danger" data-dismiss="modal" value="Go back">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -81,6 +107,14 @@
                 }
                 web.getData(data);
             })
+            $('.card-body').click(function(e) {
+                var FacilityID = e.target.attributes.data.nodeValue;
+                var data = {
+                    FacilityID: FacilityID
+                }
+                $('#facilityTable').html(`Loading`);
+                web.detailData(data);
+            })
         },
         getAll: function () {
             $.ajax({
@@ -109,6 +143,21 @@
                 }
             })
         },
+        detailData: function(data) {
+            $.ajax({
+                url: "facility.php",
+                type: "post",
+                data: {
+                    FacilityID: data.FacilityID,
+                    type: 'detail'
+                },
+                datatype: "json",
+                success: function(data) {
+                    web.data.detailID = data[0].FacilityID;
+                    web.showData(data[0]);
+                }
+            })
+        },
         //Get data and put them into table
         setData: function (data) {
             var html = "";
@@ -116,14 +165,27 @@
                 html += `
                         <tr>
                             <td data-label='Facility Name'> ${data.Name}</td>
-                            <td data-label='Picture'><img src= "${data.Picture}" height="150" width="150" alt=""></td>
+                            <td data-label='Picture'><img src= "${data.Picture}" height="100vw" width="100vw" alt=""></td>
                             <td data-label='Working time'>${data.Opentime}&nbsp To &nbsp${data.Closetime}</td>
-                            <td data-label='Description'>${data.Description}</td>
                             <td data-label='Prices'>${data.Prices}</td>
+                            <td type="edit">
+                                <button id="bookingModle" type="button" btntype="Booking" data="${data.FacilityID}" class="btn btn-success" data-toggle="modal" data-target="#bookingModal">Booking</button>
+                            </td>
                         </tr>`
             })
-            $('#tbody').html(html);
-        }
+            $('#body').html(html);
+        },
+        showData: function(data) {
+            var html = "";
+            html += `
+                        <tr><td data-label='Facility Name'> ${data.Name}</td></tr>
+                        <tr><td data-label='Picture'><img src= "${data.Picture}" height="150vw" width="150vw" alt=""></td></tr>
+                         <tr><td data-label='Description'>${data.Description}</td></tr>
+                         <tr><td data-label='Prices'>${data.Prices}</td>
+                        </tr>`
+            console.log(html)
+            $('#facilityTable').html(html);
+        },
     }
 
     $(document).ready(function () {
