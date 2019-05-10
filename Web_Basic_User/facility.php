@@ -10,13 +10,14 @@ if ($type === 'get') {
 function get()
 {
     $name = @$_POST['name'];
-    $dbms = 'mysql';
-    $dbName = 'dbtest';
-    $host = 'dbtest.ce12oaotat2e.eu-west-2.rds.amazonaws.com';
-    $user = 'root';
-    $pass = '12341234';
-    $dsn = "$dbms:host=$host;dbname=$dbName";
-    $pdo = new PDO($dsn, $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+//    $dbms = 'mysql';
+//    $dbName = 'dbtest';
+//    $host = 'dbtest.ce12oaotat2e.eu-west-2.rds.amazonaws.com';
+//    $user = 'root';
+//    $pass = '12341234';
+//    $dsn = "$dbms:host=$host;dbname=$dbName";
+//    $pdo = new PDO($dsn, $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+    $pdo = connectDBPDO();
     if ($name) {
         $statement = $pdo->query(
             "SELECT Name,Picture,Opentime,Closetime,Prices,Description FROM Facility WHERE Name like '%$name%';");
