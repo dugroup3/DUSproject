@@ -215,6 +215,9 @@ function SelectBookingByID($BookingID)
     return $rows;
 }
 
+//Block Booking Part SQL
+
+//Get the Trainer List
 function getTrainerList()
 {
     $dbh = connectDBPDO();
@@ -223,6 +226,36 @@ function getTrainerList()
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     $dbh = null;
     return $rows;
+}
+
+//Add Event
+function AddEvent($Eventname,$UserID,$FacilityID,$BookingID,$EventStartTime,$EventEndTime,$DaysOfWeek){
+    $dbh = connectDBPDO();
+    $sql = "INSERT INTO `Event`(`Eventname`,`UserID`,`FacilityID`, `BookingID`,`EventStartTime`, `EventEndTime`, `DaysOfWeek`) 
+           VALUES ('$Eventname','$UserID','$FacilityID','$BookingID','$EventStartTime','$EventEndTime','$DaysOfWeek')";
+    $statement = $dbh->query($sql);
+    $dbh = null;
+    return $statement;
+}
+
+//Get the Block Booking list
+function GetBlockBookingList(){
+    $dbh = connectDBPDO();
+    $sql = "SELECT * FROM `Event`";
+    $statement = $dbh->query($sql);
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $rows;
+}
+
+//Delete Event
+function DeleteEvent($EventID)
+{
+    $dbh = connectDBPDO();
+    $sql = "DELETE FROM `Event` WHERE `EventID`=$EventID";
+    $statement = $dbh->query($sql);
+    $dbh = null;
+    return $statement;
 }
 
 ?>

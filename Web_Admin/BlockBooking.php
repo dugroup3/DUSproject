@@ -36,15 +36,46 @@
             <th scope="col">Event Name</th>
             <th scope="col">User ID</th>
             <th scope="col">Block Book ID</th>
-            <th scope="col">Event start time</th>
-            <th scope="col">Event end time</th>
+            <th scope="col">Event  time</th>
             <th scope="col">Event days of week</th>
             <th scope="col">Modify</th>
         </tr>
         </thead>
         <tbody>
         <!-- Show Block Booking List       -->
+        <?php
+        try {
+            $rows = GetBlockBookingList();
+            $data_count = count($rows);
+            for ($i = 0; $i < $data_count; $i++) {
+                $EventID = $rows[$i]['EventID'];
+                $Eventname = $rows[$i]['Eventname'];
+                $UserID = $rows[$i]['UserID'];
+                $BookingID = $rows[$i]['BookingID'];
+                $EventStartTime = $rows[$i]['EventStartTime'];
+                $EventEndTime = $rows[$i]['EventEndTime'];
+                $DaysOfWeek = $rows[$i]['DaysOfWeek'];
 
+
+                echo "<tr>
+                    <td data-label='EventID'>$EventID</td>
+                    <td data-label='Event Name'> $Eventname</td>
+                    <td data-label='TrainerID'> $UserID</td>
+                    <td data-label='BookingID'> $BookingID</td>
+                    <td data-label='Event time'><p style='font-size: 15px; color: black'> From:<br>  $EventStartTime <br> to <br>  $EventEndTime</p></td>
+                    <td data-label='DaysOfWeek'> $DaysOfWeek</td>";
+                ?>
+                <td data-label='Modify'>
+                    <?php echo "<a href='CancelBlockBook.php?EventID=$EventID&BookingID=$BookingID' onclick='return del()' style='margin-left: 10px'><input type='button' class='btn btn-danger' value='Cancel Block'></a>" ?>
+                </td>
+                <?php
+                echo "</tr>";
+
+            }
+        } catch (PDOException $e) {
+            die ("Error!: " . $e->getMessage() . "<br/>");
+        }
+        ?>
         </tbody>
     </table>
 </div>

@@ -43,14 +43,8 @@ $BlockStartTime = filter_input(INPUT_POST, 'BlockStartTime', FILTER_SANITIZE_STR
 $BlockBookEndTime = filter_input(INPUT_POST, 'BlockBookEndTime', FILTER_SANITIZE_STRING);
 $starttime = filter_input(INPUT_POST, 'starttime', FILTER_SANITIZE_STRING);
 $endtime = filter_input(INPUT_POST, 'endtime', FILTER_SANITIZE_STRING);
+$DaysOfWeek = $_POST['DaysOfWeek'];
 
-//echo $FacilityName."<br>";
-//echo $EventName."<br>";
-//echo $UserID."<br>";
-//echo $BlockStartTime."<br>";
-//echo $BlockBookEndTime."<br>";
-//echo $starttime."<br>";
-//echo $endtime."<br>";
 
 
 //1. Find the user by username check whether he has register.
@@ -59,8 +53,27 @@ $Facilityrows = FindFacilityID($FacilityName);
 if ($rows == 0) {
     die("This User have not register, Booking fail!!");
 } else {
+    //Get the Facility ID by Facility Name.
     $FacilityID = $Facilityrows["FacilityID"];
-    $statement = AddBooking($FacilityID, $UserID, $BlockStartTime, $BlockBookEndTime, 0);
+    //Insert the Booking Detail into Booking Table.
+    $pdo = connectDBPDO();
+    $sql = "INSERT INTO `Booking`(`FacilityID`, `UserID`, `Starttime`, `Endtime`, `Totalcost`) 
+           VALUES ('$FacilityID','$UserID','$BlockStartTime','$BlockBookEndTime','0')";
+    $statement = $pdo->query($sql);
+    if($statement){
+        //Get the Booking ID.
+        $BookingID = $pdo->lastInsertId();
+        //Add Event into database.
+        $statement2 = AddEvent($EventName,$UserID,$FacilityID,$BookingID,$starttime,$endtime,$DaysOfWeek);
+        if($statement2){
+            echo "<script>alert('Add Block Booking Success!!');location.href='BlockBooking.php';</script>";
+        }else{
+            echo "<script>alert('Add Block Booking fail!! Please try again');location.href='BlockBooking.php';</script>";
+        }
+    }else{
+        die("Create Block Booking Fail!");
+    }
+
 }
 
 ?>
