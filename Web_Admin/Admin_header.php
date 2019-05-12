@@ -21,7 +21,7 @@
                     <a class="nav-a" href="BookingManagement.php">Booking Management</a>
                 </li>
                 <li class="cative">
-                    <a class="nav-a" href="#">Classes</a>
+                    <a class="nav-a" href="BlockBooking.php">Block Booking</a>
                 </li>
                 <li class="cative">
                     <a class="nav-a" href="../Web_Basic_User/logout.php">Log out</a>
