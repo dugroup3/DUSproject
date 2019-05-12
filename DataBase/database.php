@@ -215,4 +215,14 @@ function SelectBookingByID($BookingID)
     return $rows;
 }
 
+function getTrainerList()
+{
+    $dbh = connectDBPDO();
+    $sql = "SELECT * FROM `User` WHERE `Role`='Trainer'";
+    $statement = $dbh->query($sql);
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $rows;
+}
+
 ?>

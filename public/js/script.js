@@ -71,9 +71,9 @@ function check_AddRecord_form() {
  */
 
 /**
- * Admin part - show User List ajax
+ * Admin part - show Facility List ajax
  */
-//UserList Ajax
+//Facility List Ajax
 $(document).ready(function () {
     $(".FacilityList-btn").on('click', function (e) {
         $('#FacilityDiv').fadeIn();
@@ -98,4 +98,34 @@ function got_Facility_data(facility_data) {
             "</td>" +"</tr >";
     }
     $('#FacilityList').html(output);
+}
+
+/**
+ * Admin part - show User List ajax
+ */
+//User List Ajax
+$(document).ready(function () {
+    $(".UserList-btn").on('click', function (e) {
+        $('#UserDiv').fadeIn();
+        console.log("hhh");
+        $.ajax({
+            url: "../Web_Admin/Ajax-UserList.php",
+            type:"post",
+            success: got_User_data,
+            dataType:"json"
+        });
+    })
+})
+
+
+//show User list
+function got_User_data(User_data) {
+    num=User_data.length;
+    output = "<tr><th>" + "User ID" + "</th><th>" + "User email" + "</th></tr>";
+    for (var i = 0; i < num; i++) {
+        output += "<tr>"  + "<td data-label='User ID'>" + User_data[i].UserID + "</td>" +
+            "<td data-label='User email'>" + User_data[i].Username +
+            "</td>" +"</tr >";
+    }
+    $('#UserList').html(output);
 }

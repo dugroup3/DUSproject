@@ -25,11 +25,11 @@
 <div class="Mycontainer" style="background: white">
 
     <a>
-        <button class="btn btn-danger FacilityList-btn">Check the Trainer ID</button>
+        <button class="btn btn-danger UserList-btn">Check the Trainer ID</button>
     </a>
 
-    <div id="FacilityDiv" class="Mycontainer" style="background: white; display:none; margin-bottom: 30px">
-        <table id='FacilityList'>
+    <div id="UserDiv" class="Mycontainer" style="background: white; display:none; margin-bottom: 30px">
+        <table id='UserList'>
             <thead>
             </thead>
             <tbody>
@@ -38,7 +38,7 @@
         </table>
     </div>
 
-    <form id="block-book-form" class="form-horizontal" action="#" role="form" method="post"
+    <form id="block-book-form" class="form-horizontal" action="BlockBookingAction.php" role="form" method="post"
           enctype="multipart/form-data">
             <div class="form-group">
                 <label for="EventNameText" class="col-sm-2 control-label">Event Name:</label>
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="BlockBookEndTimeText" class="col-sm-2 control-label">Block Book Start Time:</label>
+                <label for="BlockBookEndTimeText" class="col-sm-2 control-label">Block Book End Time:</label>
                 <div class="col-sm-10">
                     <input type="datetime-local" class="form-control" id="BlockBookEndTimeText" name="BlockBookEndTime"
                            placeholder="Please input the End Time">
@@ -98,7 +98,8 @@
             <div class="form-group">
                 <label for="DaysOfWeekText" class="col-sm-2 control-label">Days of Week:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="DaysOfWeekText" name="DaysOfWeek">
+                    <input type="text" class="form-control" id="DaysOfWeekText" name="DaysOfWeek"
+                           placeholder="For example if held on Sunday= 0, Monday = 1 .... Saturday=6">
                 </div>
             </div>
             <div class="form-group">
