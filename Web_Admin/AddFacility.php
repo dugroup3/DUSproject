@@ -60,7 +60,8 @@ if (isset($_POST['add-facility'])) {
     <link href="../public/css/bootstrap.css" rel="stylesheet"/>
     <link href="../public/css/style.css" rel="stylesheet"/>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <link rel="stylesheet" href="https://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+<!--    <link rel="stylesheet" href="https://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <script src="../public/js/bootstrap.js"></script>
     <script src="../public/js/script.js"></script>
     <title>Durham University Sport</title>
