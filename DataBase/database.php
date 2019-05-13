@@ -258,4 +258,14 @@ function DeleteEvent($EventID)
     return $statement;
 }
 
+function GetTrainer($EventID){
+    $dbh = connectDBPDO();
+    $sql = "SELECT * FROM `Event` as E LEFT JOIN Booking as B ON E.BookingID = B.BookingID left join User as U on B.UserID=U.UserID WHERE `EventID`='$EventID'";
+    $statement = $dbh->query($sql);
+    $rows = $statement->fetch(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $rows;
+}
+
+
 ?>

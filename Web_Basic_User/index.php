@@ -39,6 +39,33 @@
                 selectable: true,
                 selectMirror: true,
                 editable: true,
+                eventClick:function(info){
+                    $("#detailModal").modal("show");
+                    var title = info.event.title;
+                    document.getElementById("FacilityNameText").value=title;
+                    var bookingstart = info.event.start;
+                    document.getElementById("StartTimeText").value=bookingstart;
+                    var bookingend = info.event.end;
+                    document.getElementById("EndTimeText").value=bookingend;
+                    var eventid = info.event.id;
+
+                    $.ajax({
+                        url: '../Web_Basic_User/Ajax-Event-Detail.php?id='+eventid,
+                        type:"post",
+                        success: got_Event_data,
+                        dataType:"json"
+                    })
+                    function got_Event_data(Event_data) {
+                        if(Event_data==false)
+                        {
+                            document.getElementById("ContactText").value="is a personal Booking";
+                        }else {
+                            output = Event_data.Username;
+                            document.getElementById("ContactText").value = output;
+                        }
+                    }
+                    //alert(info.event.title);
+                },
                 eventLimit: true, // allow "more" link when too many events
             });
 
@@ -63,10 +90,41 @@
             </div>
         </nav>
         <div id='calendar'></div>
+
     </div>
 </div>
 </body>
 <div class="footerpage"></div>
+
+<!--Modal begin-->
+
+<div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="detailModalLabel">Detail</h4>
+            </div>
+            <!--         modal body   -->
+                <div class="modal-body">
+                    <div class="form-group" style="margin: 2px; margin-bottom: 20px">
+                        <label for="FacilityNameText">Facility/Event Name:</label>
+                        <input type="text" class="form-control" id="FacilityNameText" name="FacilityName" readonly>
+                        <label for="StartTimeText">Start Time:</label>
+                        <input type="text" class="form-control" id="StartTimeText" name="StartTime" readonly>
+                        <label for="EndTimeText">End Time:</label>
+                        <input type="text" class="form-control" id="EndTimeText" name="EndTime" readonly>
+                        <label for="ContactText">Trainer Contact detail</label>
+                        <input type="text" class="form-control" id="ContactText" name="contact" readonly
+                               readonly>
+                    </div>
+                </div>
+                <div class="form-group" style="margin: 2px; margin-bottom: 20px">
+                    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Go back">
+                </div>
+        </div>
+    </div>
+</div>
+<!--Modal end-->
 <script>
     $(function () {
         $(".footerpage").load("footer.html");

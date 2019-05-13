@@ -18,7 +18,7 @@ $result = $statement->fetchAll();
 
 //Get the event from database
 //$data2 = array();
-$query2 = "SELECT * FROM `Event` as E LEFT JOIN Booking as B ON E.BookingID = B.BookingID";
+$query2 = "SELECT * FROM `Event` as E LEFT JOIN Booking as B ON E.BookingID = B.BookingID left join User as U on B.UserID=U.UserID";
 $statement2 = $dbh->prepare($query2);
 $statement2->execute();
 $result2 = $statement2->fetchAll();
