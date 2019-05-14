@@ -66,6 +66,23 @@
                     }
                     //alert(info.event.title);
                 },
+                //Block booking
+                dateClick:function(info){
+                    $.ajax({
+                        url: '../Web_Basic_User/Ajax-Event.php',
+                        type:"post",
+                        success: got_Eventday_data,
+                        dataType:"json"
+                    })
+                    function got_Eventday_data(Event_data) {
+                        num=Event_data.length;
+                        for (var i = 0; i < num; i++) {
+                            if(info.dateStr>=Event_data[i].Starttime&&info.dateStr<=Event_data[i].Endtime){
+                                alert("Can not booking");
+                            }
+                        }
+                    }
+                },
                 eventLimit: true, // allow "more" link when too many events
             });
 
