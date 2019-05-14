@@ -268,6 +268,7 @@ function GetTrainer($EventID){
     return $rows;
 }
 
+//Get booking Day
 function Getbookingday(){
     $dbh = connectDBPDO();
     $sql = "SELECT * FROM `Event` as E LEFT JOIN Booking as B ON E.BookingID = B.BookingID";
@@ -276,6 +277,14 @@ function Getbookingday(){
     $dbh = null;
     return $rows;
 }
-
+//Get booking Day By id
+function GetbookingdaybyID($FacilityID){
+    $dbh = connectDBPDO();
+    $sql = "SELECT * FROM `Event` as E LEFT JOIN Booking as B ON E.BookingID = B.BookingID WHERE B.FacilityID='$FacilityID'";
+    $statement = $dbh->query($sql);
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $rows;
+}
 
 ?>

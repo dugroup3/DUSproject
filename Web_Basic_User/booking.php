@@ -13,6 +13,13 @@ $statement->execute();
 
 $result = $statement->fetchAll();
 
+
+//Load Evnet Detail.
+$query2 = "SELECT * FROM `Event` as E LEFT JOIN Booking as B ON E.BookingID = B.BookingID WHERE B.FacilityID='$id' ";
+$statement2 = $dbh->prepare($query2);
+$statement2->execute();
+$result2 = $statement2->fetchAll();
+
 foreach ($result as $row){
     $data[]= array(
         'id'        => $row["BookingID"],
@@ -22,5 +29,23 @@ foreach ($result as $row){
 
     );
 }
+
+foreach ($result2 as $row) {
+    $dayofweek=$row['DaysOfWeek'];
+    explode(',',$dayofweek,0);
+    $data[] = array(
+        'id' => $row['EventID'],
+        'title' => $row['Eventname'],
+        'daysOfWeek' => $dayofweek,
+        'startTime' =>$row['EventStartTime'],
+        'endTime'=>$row['EventEndTime'],
+        'startRecur'=>$row['Starttime'],
+        'endRecur'=>$row['Endtime'],
+        'color'=>'red',
+
+    );
+}
+
+
 
 echo json_encode($data);
