@@ -81,7 +81,7 @@
                 <label for="role" class="col-sm-2 control-label">Identity:</label>
                 <div class="col-sm-10">
                     <input type="radio" id="public" name="role" value="Public">Public &nbsp&nbsp&nbsp
-                    <input type="radio" id="student" name="role" value="Student">Student &nbsp&nbsp&nbsp
+                    <input type="radio" id="student" name="role" value="Student" checked="checked">Student &nbsp&nbsp&nbsp
                     <input type="radio" id="staff" name="role" value="Staff">Staff &nbsp&nbsp&nbsp
                     <input type="radio" id="trainer" name="role" value="Trainer">Trainer
                 </div>

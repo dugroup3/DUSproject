@@ -24,6 +24,35 @@ if (!empty($_GET['Username'])) {
     <link href="../public/css/style.css" rel="stylesheet">
     <!--JS-->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script>
+        function checkModify_form() {
+
+
+            var Firstname = document.getElementById("firstNameText").value;
+            var lastname = document.getElementById("lastNameText").value;
+
+            var phone= document.getElementById("phoneText").value;
+
+
+
+
+            if (Firstname.length == 0) {
+                alert("Please enter the first name!");
+                return false;
+            }
+            if (lastname.length == 0) {
+                alert("Please enter the last name!");
+                return false;
+            }
+            if (phone.length == 0) {
+                alert("Please enter the right phone number!");
+                return false;
+            }
+
+            return true;
+
+        }
+    </script>
 </head>
 <body>
 <!-- Page Content  -->
@@ -44,7 +73,7 @@ if (!empty($_GET['Username'])) {
 
         <h2>Modify Personal Information Page</h2>
         <!--        Form Start-->
-        <form class="form-horizontal" role="form" onsubmit="return check_form()" method="post">
+        <form class="form-horizontal" role="form" onsubmit="return checkModify_form()" method="post">
             <div class="form-group">
                 <label for="firstNameText" class="col-sm-2 control-label">First Name:</label>
                 <div class="col-sm-10">

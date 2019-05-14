@@ -6,6 +6,7 @@ function check_form() {
     var Firstname = document.getElementById("firstNameText").value;
     var lastname = document.getElementById("lastNameText").value;
     var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //Verify the email address
+    var phone= document.getElementById("phoneText").value;
 
 
     if (!reg.test(username)) {
@@ -28,9 +29,62 @@ function check_form() {
         alert("Please enter the last name!");
         return false;
     }
+    if (phone.length == 0) {
+        alert("Please enter the right phone number!");
+        return false;
+    }
+
     return true;
+
 }
 
+//check username format of forgetpassword page
+function check_ForgetPassword_form() {
+    var username = document.getElementById("UsernameText").value;
+
+
+    var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //Verify the email address
+
+
+
+    if (!reg.test(username)) {
+        alert("Please input the right email address!!");
+        return false;
+    }
+
+
+    return true;
+
+}
+
+//check modifypersonalinfo form
+function checkModify_form() {
+
+
+    var Firstname = document.getElementById("firstNameText").value;
+    var lastname = document.getElementById("lastNameText").value;
+
+    var phone= document.getElementById("phoneText").value;
+
+
+
+
+    if (Firstname.length == 0) {
+        alert("Please enter the first name!");
+        return false;
+    }
+    if (lastname.length == 0) {
+        alert("Please enter the last name!");
+        return false;
+    }
+    if (phone.length == 0) {
+        alert("Please enter the right phone number!");
+        return false;
+    }
+
+    return true;
+
+}
 
 //Check Login Form
 function check_Login_form() {

@@ -13,6 +13,26 @@
     <link href="../public/css/style.css" rel="stylesheet">
     <!--JS-->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script>
+        function check_ForgetPassword_form() {
+            var username = document.getElementById("UsernameText").value;
+
+
+            var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //Verify the email address
+
+
+
+            if (!reg.test(username)) {
+                alert("Please input the right email address!!");
+                return false;
+            }
+
+
+            return true;
+
+        }
+    </script>
 </head>
 <body>
 <!-- Page Content  -->
@@ -32,7 +52,7 @@
         </nav>
 
         <h2>Password Recovery Page</h2>
-        <form class="form-horizontal" role="form" action="Sent_email_FPW.php" onsubmit="return check_Login_form()"
+        <form class="form-horizontal" role="form" action="Sent_email_FPW.php" onsubmit="return check_ForgetPassword_form()"
               method="post">
             <div class="form-group">
                 <label for="UsernameText" class="col-sm-2 control-label">User Name:</label>
