@@ -39,7 +39,8 @@ foreach ($result as $row) {
     }
 
     $data[] = array(
-        'id' => $row["BookingID"],
+        'id' => $row['BookingID'],
+        'FacilityID'=>$row['FacilityID'],
         'title' => $row["Name"],
         'start' => $row["Starttime"],
         'end' => $row["Endtime"],
@@ -48,21 +49,22 @@ foreach ($result as $row) {
     );
 }
 
-foreach ($result2 as $row) {
-    $dayofweek=$row['DaysOfWeek'];
-    explode(',',$dayofweek,0);
-    $data[] = array(
-        'id' => $row['EventID'],
-        'title' => $row['Eventname'],
-        'daysOfWeek' => $dayofweek,
-        'startTime' =>$row['EventStartTime'],
-        'endTime'=>$row['EventEndTime'],
-        'startRecur'=>$row['Starttime'],
-        'endRecur'=>$row['Endtime'],
-        'color'=>'red',
-
-    );
-}
+//foreach ($result2 as $row) {
+//    $dayofweek=$row['DaysOfWeek'];
+//    explode(',',$dayofweek,0);
+//    $data[] = array(
+//        'id' => $row['EventID'],
+//        'title' => $row['Eventname'],
+//        'FacilityID'=>$row['FacilityID'],
+//        'daysOfWeek' => $dayofweek,
+//        'startTime' =>$row['EventStartTime'],
+//        'endTime'=>$row['EventEndTime'],
+//        'startRecur'=>$row['Starttime'],
+//        'endRecur'=>$row['Endtime'],
+//        'color'=>'red',
+//
+//    );
+//}
 
 
 echo json_encode($data);
