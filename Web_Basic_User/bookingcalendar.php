@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta charset='utf-8'/>
-    <link href='../fullcalendar-4.1.0/packages/core/main.css' rel='stylesheet'/>
-    <link href='../fullcalendar-4.1.0/packages/daygrid/main.css' rel='stylesheet'/>
-    <link href='../fullcalendar-4.1.0/packages/timegrid/main.css' rel='stylesheet'/>
-    <script src='../fullcalendar-4.1.0/packages/core/main.js'></script>
-    <script src='../fullcalendar-4.1.0/packages/interaction/main.js'></script>
-    <script src='../fullcalendar-4.1.0/packages/daygrid/main.js'></script>
-    <script src='../fullcalendar-4.1.0/packages/timegrid/main.js'></script>
+    <link href='../public/lib/fullcalendar-4.1.0/packages/core/main.css' rel='stylesheet'/>
+    <link href='../public/lib/fullcalendar-4.1.0/packages/daygrid/main.css' rel='stylesheet'/>
+    <link href='../public/lib/fullcalendar-4.1.0/packages/timegrid/main.css' rel='stylesheet'/>
+    <script src='../public/lib/fullcalendar-4.1.0/packages/core/main.js'></script>
+    <script src='../public/lib/fullcalendar-4.1.0/packages/interaction/main.js'></script>
+    <script src='../public/lib/fullcalendar-4.1.0/packages/daygrid/main.js'></script>
+    <script src='../public/lib/fullcalendar-4.1.0/packages/timegrid/main.js'></script>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -71,7 +71,7 @@
                 dateClick: function (info) {
                     document.getElementById("FacilityDate").value=info.dateStr;
                     $.ajax({
-                        url: '../Web_Basic_User/Ajax-Event.php',
+                        url: '../Web_Basic_User/Ajax-EventByID.php?FacilityID='+<?php echo $FacilityID ?>,
                         type:"post",
                         success: got_Eventday_data,
                         dataType:"json"
@@ -81,10 +81,16 @@
                         for (var i = 0; i < num; i++) {
                             if(info.dateStr>=Event_data[i].Starttime&&info.dateStr<=Event_data[i].Endtime){
                                 alert("Can not booking");
+                                break;
+                            }else {
+                                $("#bookingModal").modal("show");
                             }
                         }
+                        if(Event_data.noevent=='ok'){
+                            $("#bookingModal").modal("show");
+                        }
+
                     }
-                    $("#bookingModal").modal("show");
                 },
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events

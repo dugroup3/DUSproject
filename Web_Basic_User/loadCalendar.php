@@ -11,6 +11,7 @@ require_once '../DataBase/database.php';
 $dbh = connectDBPDO();
 //Get the booking from database
 $data = array();
+//$query = "SELECT * FROM `Booking` as B LEFT JOIN Facility as F ON B.FacilityID = F.FacilityID WHERE B.Totalcost!=0";
 $query = "SELECT * FROM `Booking` as B LEFT JOIN Facility as F ON B.FacilityID = F.FacilityID WHERE B.Totalcost!=0";
 $statement = $dbh->prepare($query);
 $statement->execute();
