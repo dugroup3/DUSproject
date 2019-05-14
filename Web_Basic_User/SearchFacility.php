@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +62,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="bookingModalLabel">Detail</h4>
+                        <h4 class="modal-title" id="detailModalLabel">Detail</h4>
                     </div>
                     <div class="modal-body">
                         <table>
@@ -169,7 +170,8 @@
                             <td data-label='Working time'>${data.Opentime}&nbsp To &nbsp${data.Closetime}</td>
                             <td data-label='Prices'>${data.Prices}</td>
                             <td type="edit">
-                                <button id="bookingModle" type="button" btntype="Booking" data="${data.FacilityID}" class="btn btn-success" data-toggle="modal" data-target="#bookingModal">Booking</button>
+                                <button id="bookingModle" type="button" btntype="Booking" data="${data.FacilityID}" class="btn btn-success" data-toggle="modal" data-target="#bookingModal">More</button>
+                                <a href="bookingcalendar.php?param=${data.FacilityID}"><button id="bookingModle" type="button" btntype="Booking" class="btn btn-primary" >Booking</button>
                             </td>
                         </tr>`
             })
@@ -183,7 +185,6 @@
                          <tr><td data-label='Description'>${data.Description}</td></tr>
                          <tr><td data-label='Prices'>${data.Prices}</td>
                         </tr>`
-            console.log(html)
             $('#facilityTable').html(html);
         },
     }
