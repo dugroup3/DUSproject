@@ -22,73 +22,6 @@
     <!--JS-->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-    <script>
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('calendar');
-
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: ['interaction', 'dayGrid', 'timeGrid'],
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                },
-                events: 'loadCalendar.php',
-                navLinks: true, // can click day/week names to navigate views
-                selectable: true,
-                selectMirror: true,
-                editable: true,
-                eventClick:function(info){
-                    $("#detailModal").modal("show");
-                    var title = info.event.title;
-                    document.getElementById("FacilityNameText").value=title;
-                    var bookingstart = info.event.start;
-                    document.getElementById("StartTimeText").value=bookingstart;
-                    var bookingend = info.event.end;
-                    document.getElementById("EndTimeText").value=bookingend;
-                    var eventid = info.event.id;
-
-                    $.ajax({
-                        url: '../Web_Basic_User/Ajax-Event-Detail.php?id='+eventid,
-                        type:"post",
-                        success: got_Event_data,
-                        dataType:"json"
-                    })
-                    function got_Event_data(Event_data) {
-                        if(Event_data==false)
-                        {
-                            document.getElementById("ContactText").value="is a personal Booking";
-                        }else {
-                            output = Event_data.Username;
-                            document.getElementById("ContactText").value = output;
-                        }
-                    }
-                    //alert(info.event.title);
-                },
-                //Block booking
-                dateClick:function(info){
-                    $.ajax({
-                        url: '../Web_Basic_User/Ajax-Event.php',
-                        type:"post",
-                        success: got_Eventday_data,
-                        dataType:"json"
-                    })
-                    function got_Eventday_data(Event_data) {
-                        num=Event_data.length;
-                        for (var i = 0; i < num; i++) {
-                            if(info.dateStr>=Event_data[i].Starttime&&info.dateStr<=Event_data[i].Endtime){
-                                alert("Can not booking");
-                            }
-                        }
-                    }
-                },
-                eventLimit: true, // allow "more" link when too many events
-            });
-
-            calendar.render();
-        });
-    </script>
 </head>
 <body>
 <!-- Page Content  -->
@@ -145,6 +78,73 @@
 <script>
     $(function () {
         $(".footerpage").load("footer.html");
+    });
+</script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            plugins: ['interaction', 'dayGrid', 'timeGrid'],
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            events: 'loadCalendar.php',
+            navLinks: true, // can click day/week names to navigate views
+            selectable: true,
+            selectMirror: true,
+            editable: true,
+            eventClick:function(info){
+                $("#detailModal").modal("show");
+                var title = info.event.title;
+                document.getElementById("FacilityNameText").value=title;
+                var bookingstart = info.event.start;
+                document.getElementById("StartTimeText").value=bookingstart;
+                var bookingend = info.event.end;
+                document.getElementById("EndTimeText").value=bookingend;
+                var eventid = info.event.id;
+
+                $.ajax({
+                    url: '../Web_Basic_User/Ajax-Event-Detail.php?id='+eventid,
+                    type:"post",
+                    success: got_Event_data,
+                    dataType:"json"
+                })
+                function got_Event_data(Event_data) {
+                    if(Event_data==false)
+                    {
+                        document.getElementById("ContactText").value="is a personal Booking";
+                    }else {
+                        output = Event_data.Username;
+                        document.getElementById("ContactText").value = output;
+                    }
+                }
+                //alert(info.event.title);
+            },
+            //Block booking
+            dateClick:function(info){
+                $.ajax({
+                    url: '../Web_Basic_User/Ajax-Event.php',
+                    type:"post",
+                    success: got_Eventday_data,
+                    dataType:"json"
+                })
+                function got_Eventday_data(Event_data) {
+                    num=Event_data.length;
+                    for (var i = 0; i < num; i++) {
+                        if(info.dateStr>=Event_data[i].Starttime&&info.dateStr<=Event_data[i].Endtime){
+                            alert("Can not booking");
+                        }
+                    }
+                }
+            },
+            eventLimit: true, // allow "more" link when too many events
+        });
+
+        calendar.render();
     });
 </script>
 </html>
