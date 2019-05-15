@@ -1,0 +1,8 @@
+.fc-event,
+.fc-event:hover {
+    color: #333;
+
+    /* default TEXT color */
+    text-decoration: none;
+    /* if <a> has an href */
+}

@@ -18,18 +18,11 @@ function connectDBPDO()
     return $dbh;
 }
 
-//Check User Session
-function checkLogin()
-{
-    if (empty($_SESSION['User'])) {
-        die("Please Login");
-    }
-}
 
 //Check Admin Session
 function checkAdmin()
 {
-    if ($_SESSION['User']['role'] != 1) {
+    if ($_SESSION['User']['Role'] != "Admin") {
         die("You are not Admin. Entry forbidden！");
     }
 }

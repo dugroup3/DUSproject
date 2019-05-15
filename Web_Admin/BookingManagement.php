@@ -16,7 +16,6 @@
 <div class="headerPage">
     <?php
     include 'Admin_header.php';
-    include '../DataBase/database.php';
     ?>
 </div>
 <div class="Mycontainer" style="background: #742e68; margin-top: 100px">
