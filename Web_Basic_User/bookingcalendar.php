@@ -133,18 +133,18 @@
                 <div class="modal-body">
                     <div class="form-group" style="margin: 2px; margin-bottom: 20px">
                         <img src="../public/img/<?php echo $Picture ?>" height="150vw" width="150vw" alt="">
-                        <input type="text" class="form-control" id="FacilityName" name="FacilityName"
+                        <input hidden type="text" class="form-control" id="FacilityName" name="FacilityName"
                                value="<?php echo $FacilityName ?>" readonly>
                 </div>
-                    <input type="text" readonly name="Username" value="<?php echo $Username?>">
-                    <input type="text" readonly name="UserID" value="<?php echo $UserID?>">
-                <label>Date:</label><input id="FacilityDate" name="FacilityDate2">
+                    <input hidden type="text" readonly name="Username" value="<?php echo $Username?>">
+                    <input hidden type="text" readonly name="UserID" value="<?php echo $UserID?>">
+                <label>Date:</label><input style= "background-color:transparent;border:0;" id="FacilityDate" name="FacilityDate2" readonly>
                 <input hidden id="FacilityID" name="FacilityID" value="<?php echo $FacilityID ?>">
                 <div><label for="StartTimeText">Booking Start Time:</label>
                     <select id="start" name="start">
-                        <option value="7" selected>7:00:00</option>
-                        <option value="8">8:00:00</option>
-                        <option value="9">9:00:00</option>
+                        <option value="07" selected>7:00:00</option>
+                        <option value="08">8:00:00</option>
+                        <option value="09">9:00:00</option>
                         <option value="10">10:00:00</option>
                         <option value="11">11:00:00</option>
                         <option value="12">12:00:00</option>
@@ -162,9 +162,8 @@
                 <div><label for="EndTimeText">Booking End Time&nbsp: </label>
 
                     <select id="end" name="end">
-                        <option value="8" selected>8:00:00</option>
-                        <option value="8">8:00:00</option>
-                        <option value="9">9:00:00</option>
+                        <option value="08" selected>8:00:00</option>
+                        <option value="09">9:00:00</option>
                         <option value="10">10:00:00</option>
                         <option value="11">11:00:00</option>
                         <option value="12">12:00:00</option>
@@ -199,15 +198,24 @@
 
                 </script>
                 <script>
-                    function cost() {
-                        var startTime = $("#start").val();
-                        var endTime = $("#end").val();
-                        var time = endTime - startTime;
-                        document.getElementById("Totalcost").value = time * <?php echo $Prices ?>;
-                    }
+
+                    var startTimeP=0;
+                    var endTimeP=0;
+                    $("#start").bind("input propertychange", function (event) {
+                        startTimeP = $("#start").val();
+                    });
+
+                    $("#end").bind("input propertychange", function (event) {
+                        endTimeP=$("#end").val();
+                        $("#tc").value=((endTimeP-startTimeP)*<?php echo $Prices?>);
+                        $("#Totalcost").html((endTimeP-startTimeP)*<?php echo $Prices?>);
+
+                    });
+
+
                 </script>
-                <div><label for="TotalcostText">Total cost:</label></div>
-                <input id="Totalcost" style="border:none" name="Totalcost" onblur="cost()" readonly>
+                    <input type="hidden" name="Totalcost" id="tc">
+                <div class="">Total cost: £ <span id="Totalcost"><?php echo $Prices?></span></div>
         </div>
         <div class="form-group" style="margin: 2px; margin-bottom: 20px">
             <input type="button" class="btn btn-danger" data-dismiss="modal" value="Go back">
