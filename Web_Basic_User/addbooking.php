@@ -31,58 +31,59 @@ if ($UserID) {
 
 
 }
-
+$a="1";
 $bookingList=GetbookingByFacilityID($FacilityID);
 foreach ($bookingList as $item){
     $startTime = explode(' ',$item['Starttime']);
     $endTime = explode(' ',$item['Endtime']);
     if($_POST['FacilityDate2']==$startTime[0]){
         if(($st<=$startTime[1]&&$et>=$endTime[1])||($startTime[1]<=$st&&$st<=$endTime[1])||($startTime[1]<=$et&&$et<=$endTime[1])){
+            $a="0";
             echo "<script> alert(\"This time has already been booked!\");
-location.href=\"SearchFacility.php\";</script>";
+        location.href=\"SearchFacility.php\";</script>";
         }
 
     }
 }
+if($a=="1") {
+    $statement = $pdo->query(
+        "INSERT INTO Booking(FacilityID,UserID,Starttime,Endtime,Totalcost) VALUES ('$FacilityID','$UserID','$Starttime','$Endtime','$Totalcost')"
+    );
+    $row = $statement->fetch(PDO::FETCH_ASSOC);
 
-$statement = $pdo->query(
-    "INSERT INTO Booking(FacilityID,UserID,Starttime,Endtime,Totalcost) VALUES ('$FacilityID','$UserID','$Starttime','$Endtime','$Totalcost')"
-);
-$row = $statement->fetch(PDO::FETCH_ASSOC);
+    if ($statement) {
+        $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+        try {
+            //Server configure
+            $mail->CharSet = "UTF-8";                     //Set Email compile code
 
-if($statement){
-    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-    try {
-        //Server configure
-        $mail->CharSet ="UTF-8";                     //Set Email compile code
+            $mail->isSMTP();
+            $mail->SMTPDebug = 0; // debugging: 1 = errors and messages, 2 = messages only
+            $mail->SMTPAuth = true; // authentication enabled
+            $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
+            $mail->Host = "tls://smtp.gmail.com";
+            $mail->Port = 587; // or 587
+            $mail->IsHTML(true);
+            $mail->Username = "a604722853@gmail.com";
+            $mail->Password = "jrhopaunxnzeerha";
 
-        $mail->isSMTP();
-        $mail->SMTPDebug = 0; // debugging: 1 = errors and messages, 2 = messages only
-        $mail->SMTPAuth = true; // authentication enabled
-        $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
-        $mail->Host = "tls://smtp.gmail.com";
-        $mail->Port = 587; // or 587
-        $mail->IsHTML(true);
-        $mail->Username = "a604722853@gmail.com";
-        $mail->Password = "jrhopaunxnzeerha";
+            $mail->setFrom('a604722853@gmail.com', 'Team3');  //Who send Email
+            $mail->addAddress("$Username", 'Customer');  //  Add address
+            $mail->addReplyTo("$Username", 'info'); // who repley to
+            //Content
+            $mail->isHTML(true);                                  // 是否以HTML文档格式发送  发送后客户端可直接显示对应HTML内容
+            $mail->Subject = 'Booking Confirm' . time();
+            $mail->Body = "<h1>Booking Success</h1><p>Your booking time is From $Starttime to $Endtime in $FacilityName</p><p>The total prices is £ $Totalcost</p><p>For More detail https://www.teamdurham.com/</p>" . date('Y-m-d H:i:s');
+            $mail->AltBody = "<h1>Booking Success</h1><p>Your booking time is From $Starttime to $Endtime in $FacilityName</p><p>The total prices is £ $Totalcost</p><p>For More detail https://www.teamdurham.com/</p>" . date('Y-m-d H:i:s');
 
-        $mail->setFrom('a604722853@gmail.com', 'Team3');  //Who send Email
-        $mail->addAddress("$Username", 'Customer');  //  Add address
-        $mail->addReplyTo("$Username", 'info'); // who repley to
-        //Content
-        $mail->isHTML(true);                                  // 是否以HTML文档格式发送  发送后客户端可直接显示对应HTML内容
-        $mail->Subject = 'Booking Confirm' . time();
-        $mail->Body = "<h1>Booking Success</h1><p>Your booking time is From $Starttime to $Endtime in $FacilityName</p><p>The total prices is £ $Totalcost</p><p>For More detail https://www.teamdurham.com/</p>" . date('Y-m-d H:i:s');
-        $mail->AltBody = "<h1>Booking Success</h1><p>Your booking time is From $Starttime to $Endtime in $FacilityName</p><p>The total prices is £ $Totalcost</p><p>For More detail https://www.teamdurham.com/</p>" . date('Y-m-d H:i:s');
-
-        $mail->send();
-        echo "<script>alert('Add Booking Success!!');location.href='index.php';</script>";
-    } catch (Exception $e) {
-        echo 'Sent email fail: ', $mail->ErrorInfo;
+            $mail->send();
+            echo "<script>alert('Add Booking Success!!');location.href='index.php';</script>";
+        } catch (Exception $e) {
+            echo 'Sent email fail: ', $mail->ErrorInfo;
+        }
+        echo "<script>alert('Add Booking suc!! ');location.href='index.php';</script>";
+    } else {
+        echo "<script>alert('Add Booking Fail!! Please add again');location.href='index.php';</script>";
     }
-    echo "<script>alert('Add Booking suc!! ');location.href='index.php';</script>";
-}else{
-    echo "<script>alert('Add Booking Fail!! Please add again');location.href='index.php';</script>";
 }
-
 ?>
