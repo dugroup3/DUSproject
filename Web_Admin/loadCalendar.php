@@ -12,17 +12,11 @@ $dbh = connectDBPDO();
 //Get the booking from database
 $data = array();
 //$query = "SELECT * FROM `Booking` as B LEFT JOIN Facility as F ON B.FacilityID = F.FacilityID WHERE B.Totalcost!=0";
-$query = "SELECT * FROM `Booking` as B LEFT JOIN Facility as F ON B.FacilityID = F.FacilityID WHERE B.Totalcost!=0";
+$query = "SELECT * FROM `Booking` as B LEFT JOIN Facility as F ON B.FacilityID = F.FacilityID";
 $statement = $dbh->prepare($query);
 $statement->execute();
 $result = $statement->fetchAll();
 
-//Get the event from database
-//$data2 = array();
-$query2 = "SELECT * FROM `Event` as E LEFT JOIN Booking as B ON E.BookingID = B.BookingID left join User as U on B.UserID=U.UserID";
-$statement2 = $dbh->prepare($query2);
-$statement2->execute();
-$result2 = $statement2->fetchAll();
 
 foreach ($result as $row) {
     if($row["FacilityID"]==14){
@@ -49,22 +43,6 @@ foreach ($result as $row) {
     );
 }
 
-//foreach ($result2 as $row) {
-//    $dayofweek=$row['DaysOfWeek'];
-//    explode(',',$dayofweek,0);
-//    $data[] = array(
-//        'id' => $row['EventID'],
-//        'title' => $row['Eventname'],
-//        'FacilityID'=>$row['FacilityID'],
-//        'daysOfWeek' => $dayofweek,
-//        'startTime' =>$row['EventStartTime'],
-//        'endTime'=>$row['EventEndTime'],
-//        'startRecur'=>$row['Starttime'],
-//        'endRecur'=>$row['Endtime'],
-//        'color'=>'red',
-//
-//    );
-//}
 
 
 echo json_encode($data);
