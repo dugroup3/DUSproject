@@ -280,4 +280,12 @@ function GetbookingdaybyID($FacilityID){
     return $rows;
 }
 
+function GetbookingByFacilityID($FacilityID){
+    $dbh = connectDBPDO();
+    $sql = "SELECT * FROM Booking WHERE FacilityID='$FacilityID'";
+    $statement = $dbh->query($sql);
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $rows;
+}
 ?>

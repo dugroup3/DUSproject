@@ -1,4 +1,3 @@
-
 <?php
 require_once '../DataBase/database.php';
 $pdo= connectDBPDO();
