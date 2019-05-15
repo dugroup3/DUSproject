@@ -1,3 +1,8 @@
+<?php
+require_once '../DataBase/database.php';
+session_start();
+checkAdmin();
+?>
 <nav class="navbar navbar-default  navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
