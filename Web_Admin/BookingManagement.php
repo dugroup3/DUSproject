@@ -71,7 +71,6 @@
                     <td data-label='Total Cost'> £$Prices</td>";
                 ?>
                 <td data-label='Modify'>
-                    <?php echo "<a href='EditBooking.php?BookingID=$BookingID'><input type='button' class='btn btn-default' value='Edit'></a>" ?>
                     <?php echo "<a href='DeleteBooking.php?BookingID=$BookingID&UserID=$UserID' onclick='return del()' style='margin-left: 10px'><input type='button' class='btn btn-danger' value='Delete'></a>" ?>
                 </td>
                 <?php
