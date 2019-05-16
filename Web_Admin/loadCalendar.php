@@ -12,7 +12,8 @@ $dbh = connectDBPDO();
 //Get the booking from database
 $data = array();
 //$query = "SELECT * FROM `Booking` as B LEFT JOIN Facility as F ON B.FacilityID = F.FacilityID WHERE B.Totalcost!=0";
-$query = "SELECT * FROM `Booking` as B LEFT JOIN Facility as F ON B.FacilityID = F.FacilityID";
+//$query = "SELECT * FROM `Booking` as B LEFT JOIN Facility as F ON B.FacilityID = F.FacilityID";
+$query = "SELECT * FROM `Booking` as B LEFT JOIN Facility as F ON B.FacilityID = F.FacilityID LEFT JOIN `User` as U ON B.UserID=U.UserID";
 $statement = $dbh->prepare($query);
 $statement->execute();
 $result = $statement->fetchAll();
@@ -39,7 +40,7 @@ foreach ($result as $row) {
         'start' => $row["Starttime"],
         'end' => $row["Endtime"],
         'color'=>$row['Color'],
-
+        'Username'=>$row['Username'],
     );
 }
 

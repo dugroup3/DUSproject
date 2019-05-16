@@ -67,7 +67,7 @@
                     <input type="text" class="form-control" id="StartTimeText" name="StartTime" readonly>
                     <label for="EndTimeText">End Time:</label>
                     <input type="text" class="form-control" id="EndTimeText" name="EndTime" readonly>
-                    <label for="ContactText">Trainer Contact detail</label>
+                    <label for="ContactText">Who made this booking</label>
                     <input type="text" class="form-control" id="ContactText" name="contact" readonly
                            readonly>
                 </div>
@@ -110,22 +110,25 @@
             var bookingend = event.end;
             document.getElementById("EndTimeText").value = bookingend;
             var eventid = event.id;
+            var Username=event.Username;
+            document.getElementById("ContactText").value = Username;
 
-            $.ajax({
-                url: 'Ajax-Event-Detail.php?id=' + eventid,
-                type: "post",
-                success: got_Event_data,
-                dataType: "json"
-            })
 
-            function got_Event_data(Event_data) {
-                if (Event_data == false) {
-                    document.getElementById("ContactText").value = "is a personal Booking";
-                } else {
-                    output = Event_data.Username;
-                    document.getElementById("ContactText").value = output;
-                }
-            }
+            // $.ajax({
+            //     url: 'Ajax-Event-Detail.php?id=' + eventid,
+            //     type: "post",
+            //     success: got_Event_data,
+            //     dataType: "json"
+            // })
+            //
+            // function got_Event_data(Event_data) {
+            //     if (Event_data == false) {
+            //         document.getElementById("ContactText").value = "is a personal Booking";
+            //     } else {
+            //         output = Event_data.Username;
+            //         document.getElementById("ContactText").value = output;
+            //     }
+            // }
 
             //alert(info.event.title);
         },
