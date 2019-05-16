@@ -33,7 +33,7 @@
 
         <h2>Reset Password page</h2>
         <!--        Form Start-->
-        <form class="form-horizontal" role="form" onsubmit="return check_form()" method="post">
+        <form class="form-horizontal" role="form" onsubmit="return check_Modify_password_form()" method="post">
             <div class="form-group">
                 <label for="emailcodeText" class="col-sm-2 control-label">Verification code:</label>
                 <div class="col-sm-10">
@@ -69,6 +69,7 @@
             //get the post data from the submit form.
             $code = $_POST['emailcode'];
             $password = $_POST['password'];
+            $comfirm_password = $_POST['confirm_password'];
             $Comparecode = $_SESSION['code'];
             $username = $_SESSION['email'];
 
@@ -81,21 +82,28 @@
             if (empty($username)) {
                 die("Session out of date please try again!!");
             }
+            if ($password != $comfirm_password) {
+                echo "<script>alert('Reset fail, confirm password is not match the reset password');location.href='ForgetPasswordPage.php';</script>";
+            } else {
 
-            //Hash the password.
-            $salt = "shuaige";
-            $password_hash = $password . $salt;
-            $password_hash = password_hash($password_hash, PASSWORD_DEFAULT);
 
-            if ($code == $Comparecode) {
-                // if no error occured, continue ....
-                $statement = ResetPassword($username, $password_hash);
-                if ($statement) {
-                    echo "<script>alert('Reset password success!');location.href='LoginPage.php';</script>";
-                } else {
-                    echo "<script>alert('Reset fail, please try again');location.href='ForgetPasswordPage.php';</script>";
+                //Hash the password.
+                $salt = "shuaige";
+                $password_hash = $password . $salt;
+                $password_hash = password_hash($password_hash, PASSWORD_DEFAULT);
+
+                if ($code == $Comparecode) {
+                    // if no error occured, continue ....
+                    $statement = ResetPassword($username, $password_hash);
+                    if ($statement) {
+                        echo "<script>alert('Reset password success!');location.href='LoginPage.php';</script>";
+                    } else {
+                        echo "<script>alert('Reset fail, please try again');location.href='ForgetPasswordPage.php';</script>";
+                    }
+
+                }else{
+                    echo "<script>alert('Reset fail, please enter the correct verification code');location.href='ForgetPasswordPage.php';</script>";
                 }
-
             }
         }
         ?>
