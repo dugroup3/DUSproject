@@ -103,23 +103,29 @@ function check_Login_form() {
     return true;
 }
 
-//Check Booking Form
-function check_AddRecord_form() {
-    var MatchDate = document.getElementById("MatchDateText").value;
-    var Winner = document.getElementById("WinnerText").value;
+//Check Sign Up Form
+function check_Modify_password_form() {
+    var username = document.getElementById("usernameText").value;
+    var password = document.getElementById("passwordText").value;
+    var confirm_password = document.getElementById("Confirm_passwordText").value;
 
 
-    if (MatchDate.length == 0) {
-        alert("Please select a Date");
+    if (!reg.test(username)) {
+        alert("Please input the Your Email Address as username!!");
         return false;
     }
-    if (Winner.length == 0) {
-        alert("Please enter the WinnerName");
+    if (password.length == 0) {
+        alert("Please enter the password");
         return false;
     }
+    if (password != confirm_password) {
+        alert("The passwords are not match, Please enter again");
+        return false;
+    }
+
     return true;
-}
 
+}
 /**
  * Ajax part
  */
