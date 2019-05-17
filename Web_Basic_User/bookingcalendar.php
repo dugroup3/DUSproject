@@ -211,7 +211,7 @@
                             var startTimeP = $("#start").val();
                             var endTimeP=$("#end").val();
                             $("#Totalcost").html((endTimeP-startTimeP)*<?php echo $Prices?>);
-
+                            $("#tc").val((endTimeP-startTimeP)*<?php echo $Prices?>);
                         })
 
 
