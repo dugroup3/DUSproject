@@ -41,8 +41,8 @@ foreach ($bookingList as $item) {
     if ($_POST['FacilityDate2'] == $startTime[0]) {
         if (($st <= $startTime[1] && $et >= $endTime[1]) || ($startTime[1] <= $st && $st <= $endTime[1]) || ($startTime[1] <= $et && $et <= $endTime[1])) {
             $result = "0";
-            echo "<script> alert(\"You have other booking during this time!\");
-        location.href=\"SearchFacility.php\";</script>";
+            echo "<script> alert(\"You have another booking during this time, please check your booking calendar!\");
+        location.href=\"index.php\";</script>";
         }
 
     }
@@ -63,7 +63,7 @@ if($FacilityID==17){
                     echo $number;
                     if($number>=20){
                         $result="0";
-                        echo "<script> alert(\"$i:00:00 to $j:00:00 has been Booking full!\");
+                        echo "<script> alert(\"The booking from $i:00:00 to $j:00:00 is already full. Please choose another time to book!\");
                         location.href=\"SearchFacility.php\";</script>";
                     }
                 }
