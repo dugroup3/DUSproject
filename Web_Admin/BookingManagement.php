@@ -53,7 +53,7 @@
                 $Starttime = $rows[$i]['Starttime'];
                 $Endtime = $rows[$i]['Endtime'];
                 $Prices = $rows[$i]['Totalcost'];
-
+                $Prices=sprintf("%.2f",$Prices);
                 //Get Facility Name
                 $FacilityName = SelectFacility($FacilityID);
                 $FacilityName = $FacilityName['Name'];

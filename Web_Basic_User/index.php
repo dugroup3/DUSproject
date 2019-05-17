@@ -39,8 +39,8 @@
                 </button>
             </div>
         </nav>
-        <div id='calendar'></div>
 
+        <div id='calendar' style="margin-top: 30px"></div>
     </div>
 </div>
 </body>
@@ -55,22 +55,22 @@
                 <h4 class="modal-title" id="detailModalLabel">Detail</h4>
             </div>
             <!--         modal body   -->
-                <div class="modal-body">
-                    <div class="form-group" style="margin: 2px; margin-bottom: 20px">
-                        <label for="FacilityNameText">Facility/Event Name:</label>
-                        <input type="text" class="form-control" id="FacilityNameText" name="FacilityName" readonly>
-                        <label for="StartTimeText">Start Time:</label>
-                        <input type="text" class="form-control" id="StartTimeText" name="StartTime" readonly>
-                        <label for="EndTimeText">End Time:</label>
-                        <input type="text" class="form-control" id="EndTimeText" name="EndTime" readonly>
-                        <label for="ContactText">Trainer Contact detail</label>
-                        <input type="text" class="form-control" id="ContactText" name="contact" readonly
-                               readonly>
-                    </div>
-                </div>
+            <div class="modal-body">
                 <div class="form-group" style="margin: 2px; margin-bottom: 20px">
-                    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Go back">
+                    <label for="FacilityNameText">Facility/Event Name:</label>
+                    <input type="text" class="form-control" id="FacilityNameText" name="FacilityName" readonly>
+                    <label for="StartTimeText">Start Time:</label>
+                    <input type="text" class="form-control" id="StartTimeText" name="StartTime" readonly>
+                    <label for="EndTimeText">End Time:</label>
+                    <input type="text" class="form-control" id="EndTimeText" name="EndTime" readonly>
+                    <label for="ContactText">Trainer Contact detail</label>
+                    <input type="text" class="form-control" id="ContactText" name="contact" readonly
+                           readonly>
                 </div>
+            </div>
+            <div class="form-group" style="margin: 2px; margin-bottom: 20px">
+                <input type="button" class="btn btn-danger" data-dismiss="modal" value="Go back">
+            </div>
         </div>
     </div>
 </div>
@@ -80,6 +80,8 @@
         $(".footerpage").load("footer.html");
     });
 </script>
+
+<!--Main Calendar-->
 <script>
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -97,45 +99,47 @@
             selectable: true,
             selectMirror: true,
             editable: true,
-            eventClick:function(info){
+            eventClick: function (info) {
                 $("#detailModal").modal("show");
                 var title = info.event.title;
-                document.getElementById("FacilityNameText").value=title;
+                document.getElementById("FacilityNameText").value = title;
                 var bookingstart = info.event.start;
-                document.getElementById("StartTimeText").value=bookingstart;
+                document.getElementById("StartTimeText").value = bookingstart;
                 var bookingend = info.event.end;
-                document.getElementById("EndTimeText").value=bookingend;
+                document.getElementById("EndTimeText").value = bookingend;
                 var eventid = info.event.id;
 
                 $.ajax({
-                    url: '../Web_Basic_User/Ajax-Event-Detail.php?id='+eventid,
-                    type:"post",
+                    url: '../Web_Basic_User/Ajax-Event-Detail.php?id=' + eventid,
+                    type: "post",
                     success: got_Event_data,
-                    dataType:"json"
+                    dataType: "json"
                 })
+
                 function got_Event_data(Event_data) {
-                    if(Event_data==false)
-                    {
-                        document.getElementById("ContactText").value="is a personal Booking";
-                    }else {
+                    if (Event_data == false) {
+                        document.getElementById("ContactText").value = "is a personal Booking";
+                    } else {
                         output = Event_data.Username;
                         document.getElementById("ContactText").value = output;
                     }
                 }
+
                 //alert(info.event.title);
             },
             //Block booking
-            dateClick:function(info){
+            dateClick: function (info) {
                 $.ajax({
                     url: '../Web_Basic_User/Ajax-Event.php',
-                    type:"post",
+                    type: "post",
                     success: got_Eventday_data,
-                    dataType:"json"
+                    dataType: "json"
                 })
+
                 function got_Eventday_data(Event_data) {
-                    num=Event_data.length;
+                    num = Event_data.length;
                     for (var i = 0; i < num; i++) {
-                        if(info.dateStr>=Event_data[i].Starttime&&info.dateStr<=Event_data[i].Endtime){
+                        if (info.dateStr >= Event_data[i].Starttime && info.dateStr <= Event_data[i].Endtime) {
                             alert("Can not booking");
                         }
                     }
