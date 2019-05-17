@@ -1,3 +1,4 @@
+
 <?php
 require_once '../DataBase/database.php';
 $pdo= connectDBPDO();
@@ -30,21 +31,64 @@ if ($UserID) {
 
 
 }
-$a="1";
-$bookingList=GetbookingByFacilityID($FacilityID);
-foreach ($bookingList as $item){
-    $startTime = explode(' ',$item['Starttime']);
-    $endTime = explode(' ',$item['Endtime']);
-    if($_POST['FacilityDate2']==$startTime[0]){
-        if(($st<=$startTime[1]&&$et>=$endTime[1])||($startTime[1]<=$st&&$st<=$endTime[1])||($startTime[1]<=$et&&$et<=$endTime[1])){
-            $a="0";
-            echo "<script> alert(\"This time has already been booked!\");
+
+$result="1";
+
+$bookingList=GetbookingByUserID($UserID);
+foreach ($bookingList as $item) {
+    $startTime = explode(' ', $item['Starttime']);
+    $endTime = explode(' ', $item['Endtime']);
+    if ($_POST['FacilityDate2'] == $startTime[0]) {
+        if (($st <= $startTime[1] && $et >= $endTime[1]) || ($startTime[1] <= $st && $st <= $endTime[1]) || ($startTime[1] <= $et && $et <= $endTime[1])) {
+            $result = "0";
+            echo "<script> alert(\"You have other booking during this time!\");
         location.href=\"SearchFacility.php\";</script>";
         }
 
     }
 }
-if($a=="1") {
+
+if($FacilityID==17){
+    echo "111111111";
+    for($i=$_POST['start'];$i<$_POST['end'];$i++){
+        $bookingList=GetbookingByFacilityID($FacilityID);
+        $number=0;
+        foreach($bookingList as $item){
+            $startTime = explode(' ',$item['Starttime']);
+            $endTime = explode(' ',$item['Endtime']);
+            if($_POST['FacilityDate2']==$startTime[0]){
+                $j=$i+1;
+                if($startTime[1]<=($i.":00:00")&&($j.":00:00")<=$endTime[1]){
+                    $number++;
+                    echo $number;
+                    if($number>=20){
+                        $result="0";
+                        echo "<script> alert(\"$i:00:00 to $j:00:00 has been Booking full!\");
+                        location.href=\"SearchFacility.php\";</script>";
+                    }
+                }
+            }
+        }
+    }
+}
+else{
+    $bookingList=GetbookingByFacilityID($FacilityID);
+    foreach ($bookingList as $item){
+        $startTime = explode(' ',$item['Starttime']);
+        $endTime = explode(' ',$item['Endtime']);
+        if($_POST['FacilityDate2']==$startTime[0]){
+            if(($st<=$startTime[1]&&$et>=$endTime[1])||($startTime[1]<=$st&&$st<=$endTime[1])||($startTime[1]<=$et&&$et<=$endTime[1])){
+                $result="0";
+                echo "<script> alert(\"This time has already been booked!\");
+        location.href=\"SearchFacility.php\";</script>";
+            }
+
+        }
+    }
+}
+
+
+if($result=="1") {
     $statement = $pdo->query(
         "INSERT INTO Booking(FacilityID,UserID,Starttime,Endtime,Totalcost) VALUES ('$FacilityID','$UserID','$Starttime','$Endtime','$Totalcost')"
     );

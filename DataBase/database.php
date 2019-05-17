@@ -280,9 +280,20 @@ function GetbookingdaybyID($FacilityID){
     return $rows;
 }
 
+//Get booking by facility ID
 function GetbookingByFacilityID($FacilityID){
     $dbh = connectDBPDO();
     $sql = "SELECT * FROM Booking WHERE FacilityID='$FacilityID'";
+    $statement = $dbh->query($sql);
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $rows;
+}
+
+//Get Booking by User id
+function GetbookingByUserID($UserID){
+    $dbh = connectDBPDO();
+    $sql = "SELECT * FROM Booking WHERE UserID='$UserID'";
     $statement = $dbh->query($sql);
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     $dbh = null;
