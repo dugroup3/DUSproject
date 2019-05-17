@@ -46,10 +46,10 @@ session_start();
             }
             ?>
             <li>
-                <a href="#">About</a>
+                <a href="AboutPage.php">About</a>
             </li>
             <li>
-                <a href="#">Contact</a>
+                <a href="mailto:chiying.jiang@durham.ac.uk">Contact</a>
             </li>
         </ul>
     </nav>
