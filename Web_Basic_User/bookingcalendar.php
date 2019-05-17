@@ -216,7 +216,7 @@
 
 
                     </script>
-                    <input type="hidden" name="Totalcost" id="tc">
+                    <input type="text" name="Totalcost" id="tc" readonly>
                     <div class="">Total cost: £ <span id="Totalcost"><?php echo $Prices?></span></div>
                 </div>
                 <div class="form-group" style="margin: 2px; margin-bottom: 20px">
