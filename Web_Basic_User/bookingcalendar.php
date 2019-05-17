@@ -144,88 +144,88 @@
                         <img src="../public/img/<?php echo $Picture ?>" height="150vw" width="150vw" alt="">
                         <input hidden type="text" class="form-control" id="FacilityName" name="FacilityName"
                                value="<?php echo $FacilityName ?>" readonly>
-                </div>
+                    </div>
                     <input hidden type="text" readonly name="Username" value="<?php echo $Username?>">
                     <input hidden type="text" readonly name="UserID" value="<?php echo $UserID?>">
-                <label>Date:</label><input style= "background-color:transparent;border:0;" id="FacilityDate" name="FacilityDate2" readonly>
-                <input hidden id="FacilityID" name="FacilityID" value="<?php echo $FacilityID ?>">
-                <div><label for="StartTimeText">Booking Start Time:</label>
-                    <select id="start" name="start">
-                        <option value="07" selected>7:00:00</option>
-                        <option value="08">8:00:00</option>
-                        <option value="09">9:00:00</option>
-                        <option value="10">10:00:00</option>
-                        <option value="11">11:00:00</option>
-                        <option value="12">12:00:00</option>
-                        <option value="13">13:00:00</option>
-                        <option value="14">14:00:00</option>
-                        <option value="15">15:00:00</option>
-                        <option value="16">16:00:00</option>
-                        <option value="17">17:00:00</option>
-                        <option value="18">18:00:00</option>
-                        <option value="19">19:00:00</option>
-                        <option value="20">20:00:00</option>
-                        <option value="21">21:00:00</option>
-                        <option value="22">22:00:00</option>
-                    </select></div>
-                <div><label for="EndTimeText">Booking End Time&nbsp: </label>
+                    <label>Date:</label><input style= "background-color:transparent;border:0;" id="FacilityDate" name="FacilityDate2" readonly>
+                    <input hidden id="FacilityID" name="FacilityID" value="<?php echo $FacilityID ?>">
+                    <div><label for="StartTimeText">Booking Start Time:</label>
+                        <select id="start" name="start">
+                            <option value="07" selected>7:00:00</option>
+                            <option value="08">8:00:00</option>
+                            <option value="09">9:00:00</option>
+                            <option value="10">10:00:00</option>
+                            <option value="11">11:00:00</option>
+                            <option value="12">12:00:00</option>
+                            <option value="13">13:00:00</option>
+                            <option value="14">14:00:00</option>
+                            <option value="15">15:00:00</option>
+                            <option value="16">16:00:00</option>
+                            <option value="17">17:00:00</option>
+                            <option value="18">18:00:00</option>
+                            <option value="19">19:00:00</option>
+                            <option value="20">20:00:00</option>
+                            <option value="21">21:00:00</option>
+                            <option value="22">22:00:00</option>
+                        </select></div>
+                    <div><label for="EndTimeText">Booking End Time&nbsp: </label>
 
-                    <select id="end" name="end">
-                        <option value="08" selected>8:00:00</option>
-                        <option value="09">9:00:00</option>
-                        <option value="10">10:00:00</option>
-                        <option value="11">11:00:00</option>
-                        <option value="12">12:00:00</option>
-                        <option value="13">13:00:00</option>
-                        <option value="14">14:00:00</option>
-                        <option value="15">15:00:00</option>
-                        <option value="16">16:00:00</option>
-                        <option value="17">17:00:00</option>
-                        <option value="18">18:00:00</option>
-                        <option value="19">19:00:00</option>
-                        <option value="20">20:00:00</option>
-                        <option value="21">21:00:00</option>
-                        <option value="22">22:00:00</option>
-                    </select></div>
-                <script>
-                    $("#start").bind("input propertychange", function (event) {
-                        var end = document.getElementById("end");
-                        while (end.hasChildNodes()) //当div下还存在子节点时 循环继续
-                        {
-                            end.removeChild(end.firstChild);
-                        }
-                        var startTime = $("#start").val();
-                        var options = document.getElementById("end");
-                        for (var i = startTime; i < 22; i++) {
-                            var obj = document.createElement("option");
-                            var time = parseInt(i) + 1;
-                            obj.innerHTML = time + ":00:00";
-                            obj.value = time;
-                            options.appendChild(obj);
-                        }
-                    });
+                        <select id="end" name="end">
+                            <option value="08" selected>8:00:00</option>
+                            <option value="09">9:00:00</option>
+                            <option value="10">10:00:00</option>
+                            <option value="11">11:00:00</option>
+                            <option value="12">12:00:00</option>
+                            <option value="13">13:00:00</option>
+                            <option value="14">14:00:00</option>
+                            <option value="15">15:00:00</option>
+                            <option value="16">16:00:00</option>
+                            <option value="17">17:00:00</option>
+                            <option value="18">18:00:00</option>
+                            <option value="19">19:00:00</option>
+                            <option value="20">20:00:00</option>
+                            <option value="21">21:00:00</option>
+                            <option value="22">22:00:00</option>
+                        </select></div>
+                    <script>
+                        $("#start").bind("input propertychange", function (event) {
+                            var end = document.getElementById("end");
+                            while (end.hasChildNodes()) //当div下还存在子节点时 循环继续
+                            {
+                                end.removeChild(end.firstChild);
+                            }
+                            var startTime = $("#start").val();
+                            var options = document.getElementById("end");
+                            for (var i = startTime; i < 22; i++) {
+                                var obj = document.createElement("option");
+                                var time = parseInt(i) + 1;
+                                obj.innerHTML = time + ":00:00";
+                                obj.value = time;
+                                options.appendChild(obj);
+                            }
+                        });
 
-                </script>
-                <script>
-                    $("#end").bind("input propertychange", function () {
-                        var startTimeP = $("#start").val();
-                        var endTimeP=$("#end").val();
-                        $("#Totalcost").html((endTimeP-startTimeP)*<?php echo $Prices?>);
-                        $("#tc").val((endTimeP-startTimeP)*<?php echo $Prices?>);
-                    })
+                    </script>
+                    <script>
+                        $("#end").bind("input propertychange", function () {
+                            var startTimeP = $("#start").val();
+                            var endTimeP=$("#end").val();
+                            $("#Totalcost").html((endTimeP-startTimeP)*<?php echo $Prices?>);
+                            $("#tc").val((endTimeP-startTimeP)*<?php echo $Prices?>);
+                        })
 
 
-                </script>
+                    </script>
                     <input type="hidden" name="Totalcost" id="tc" value="<?php echo $Prices?>">
-                <div class="">Total cost: £ <span id="Totalcost"><?php echo $Prices?></span></div>
+                    <div class="">Total cost: £ <span id="Totalcost"><?php echo $Prices?></span></div>
+                </div>
+                <div class="form-group" style="margin: 2px; margin-bottom: 20px">
+                    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Go back">
+                    <input type="submit" id="add" style="float:right;" class="btn btn-primary" value="Confirm">
+                </div>
         </div>
-        <div class="form-group" style="margin: 2px; margin-bottom: 20px">
-            <input type="button" class="btn btn-danger" data-dismiss="modal" value="Go back">
-            <input type="submit" id="add" style="float:right;" class="btn btn-primary" value="Confirm">
-        </div>
+        </form>
     </div>
-    </form>
-</div>
 </div>
 </div>
 
