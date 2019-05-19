@@ -110,8 +110,8 @@
                     </div>
                     <div class="modal-body">
                         <table>
-                        <tbody id='facilityTable'>
-                        </tbody>
+                            <tbody id='facilityTable'>
+                            </tbody>
 
                         </table>
 
