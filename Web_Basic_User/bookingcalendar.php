@@ -90,11 +90,12 @@
                         for (var i = 0; i < num; i++) {
                             if(info.dateStr>=Event_data[i].Starttime&&info.dateStr<=Event_data[i].Endtime){
                                 alert("Can not booking");
-                                break;
+                                return;
                             }else {
-                                $("#bookingModal").modal("show");
+                                continue;
                             }
                         }
+                        $("#bookingModal").modal("show");
                         if(Event_data.noevent=='ok'){
                             $("#bookingModal").modal("show");
                         }

@@ -5,7 +5,7 @@ $dbh=connectDBPDO();
 $id=$_GET['id'];
 $data = array();
 
-$query = "SELECT * FROM `Booking` as B LEFT JOIN Facility as F ON B.FacilityID = F.FacilityID WHERE B.FacilityID='$id'";
+$query = "SELECT * FROM `Booking` as B LEFT JOIN Facility as F ON B.FacilityID = F.FacilityID WHERE B.FacilityID='$id' and B.Totalcost!=0";
 
 $statement = $dbh->prepare($query);
 
