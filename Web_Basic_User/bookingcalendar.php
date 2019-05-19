@@ -37,6 +37,14 @@
     $id = $_GET['param'];
     $Username=$_SESSION['User']['Username'];
     $UserID=$_SESSION['User']['UserID'];
+    if (empty($_SESSION['User'])) {
+        echo "<script>
+
+        alert('You are not logged in yet! please log in first.');
+
+        window.location.href='LoginPage.php';
+        </script>";
+    }
     $statement = $pdo->query(
         "SELECT FacilityID,Name,Prices,Picture FROM Facility WHERE FacilityID = '$id';");
     $row = $statement->fetch(PDO::FETCH_ASSOC);
