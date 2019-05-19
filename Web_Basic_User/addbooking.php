@@ -49,7 +49,6 @@ foreach ($bookingList as $item) {
 }
 
 if($FacilityID==17){
-    echo "111111111";
     for($i=$_POST['start'];$i<$_POST['end'];$i++){
         $bookingList=GetbookingByFacilityID($FacilityID);
         $number=0;
