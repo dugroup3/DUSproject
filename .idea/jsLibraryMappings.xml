@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{bootstrap, fontawesome, fullcalendar, moment, solid}" />
+    <file url="PROJECT" libraries="{bootstrap, dataTables.bootstrap, fontawesome, fullcalendar, jquery-3.3.1, jquery.dataTables, moment, solid}" />
   </component>
 </project>
