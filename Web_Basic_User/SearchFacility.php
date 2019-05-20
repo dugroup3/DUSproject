@@ -102,6 +102,7 @@
                     </tbody>
                 </table>
         </div>
+        <i style="float:left;">Site pictures are from the network.</i>
         <div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="bookingModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
