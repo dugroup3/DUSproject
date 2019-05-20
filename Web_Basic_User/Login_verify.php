@@ -4,7 +4,7 @@
  * User: jiangchiying
  * Date: 2019-05-06
  * Time: 14:55
- * Check the Login
+ * Check user Login
  */
 require_once '../DataBase/database.php';
 
