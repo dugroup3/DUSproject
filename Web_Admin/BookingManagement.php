@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
 
     <title>Durham University Sport</title>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        } );
+    </script>
 </head>
 <body>
 <div class="headerPage">
@@ -94,10 +99,6 @@
 
 </div>
 <script>
-
-    $(document).ready(function() {
-        $('#myTable').DataTable();
-    } );
 
     $(function () {
         $(".footerpage").load("footer.html");
