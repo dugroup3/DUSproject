@@ -87,7 +87,9 @@
                 },
                 //Select a day to add booking function.
                 dateClick: function (info) {
-                    document.getElementById("FacilityDate").value=info.dateStr;
+                    var date = info.dateStr;
+                    date = formatDate(date);
+                    document.getElementById("FacilityDate").value=date;
                     $.ajax({
                         url: '../Web_Basic_User/Ajax-EventByID.php?FacilityID='+<?php echo $FacilityID ?>,
                         type:"post",
@@ -99,11 +101,12 @@
                         for (var i = 0; i < num; i++) {
                             if(info.dateStr>=Event_data[i].Starttime&&info.dateStr<=Event_data[i].Endtime){
                                 alert("Can not booking");
-                                break;
+                                return;
                             }else {
-                                $("#bookingModal").modal("show");
+                                continue;
                             }
                         }
+                        $("#bookingModal").modal("show");
                         if(Event_data.noevent=='ok'){
                             $("#bookingModal").modal("show");
                         }
@@ -116,6 +119,18 @@
 
             calendar.render();
         });
+
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [year, month, day].join('-');
+        }
 
     </script>
     <style>
