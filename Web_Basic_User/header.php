@@ -46,6 +46,9 @@ session_start();
             }
             ?>
             <li>
+                <a href="HelpPage.php">Help</a>
+            </li>
+            <li>
                 <a href="AboutPage.php">About</a>
             </li>
             <li>
