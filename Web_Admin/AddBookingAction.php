@@ -61,7 +61,7 @@ if ($rows == 0) {
     //echo $BookingCapacity;
 
     //if have capacity left
-    if ($BookingCapacity < $Capacity) {
+    if ($BookingCapacity <= $Capacity) {
         // if no error occured, continue ....
         $statement = AddBooking($FacilityID, $UserID, $StartTime, $EndTime, $Prices);
         if ($statement) {
