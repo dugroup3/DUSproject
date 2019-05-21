@@ -13,7 +13,7 @@ function check_form() {
         alert("Please input the Your Email Address as username!!");
         return false;
     }
-    if (password.length <6) {
+    if (password.length < 6) {
         alert("Please enter 6 digital password");
         return false;
     }
