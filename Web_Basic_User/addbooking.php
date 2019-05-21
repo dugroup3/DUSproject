@@ -18,6 +18,9 @@ $Endtime=$_POST['FacilityDate2']."T".$_POST['end'].":00:00";
 $et=$_POST['end'].":00:00";
 $Totalcost=$_POST['Totalcost'];
 
+$st2=$pdo->query("SELECT Capacity FROM Facility WHERE FacilityID='$FacilityID'");
+$row2=$st2->fetch(PDO::FETCH_ASSOC);
+$capacity=$row2['Capacity'];
 if ($UserID) {
 }else{
     ?>
@@ -48,8 +51,7 @@ foreach ($bookingList as $item) {
     }
 }
 
-if($FacilityID==17){
-    for($i=$_POST['start'];$i<$_POST['end'];$i++){
+for($i=$_POST['start'];$i<$_POST['end'];$i++){
         $bookingList=GetbookingByFacilityID($FacilityID);
         $number=0;
         foreach($bookingList as $item){
@@ -61,7 +63,7 @@ if($FacilityID==17){
                 $e=explode(':',$endTime[1]);
                 if($s[0]<=$i&&$j<=$e[0]){
                     $number++;
-                    if($number>=20){
+                    if($number>=$capacity){
                         $result="0";
                         if($j<=10){
                         echo "<script> alert(\"$i:00:00 to 0$j:00:00 has been Booking full!\");
@@ -74,23 +76,6 @@ if($FacilityID==17){
             }
         }
     }
-}
-else{
-    $bookingList=GetbookingByFacilityID($FacilityID);
-    foreach ($bookingList as $item){
-        $startTime = explode(' ',$item['Starttime']);
-        $endTime = explode(' ',$item['Endtime']);
-        if($_POST['FacilityDate2']==$startTime[0]){
-            if(($st<=$startTime[1]&&$et>=$endTime[1])||($startTime[1]<=$st&&$st<$endTime[1])||($startTime[1]<$et&&$et<=$endTime[1])){
-                $result="0";
-                echo "<script> alert(\"This time has already been booked!\");
-        location.href=\"SearchFacility.php\";</script>";
-            }
-
-        }
-    }
-}
-
 
 if($result=="1") {
     $statement = $pdo->query(
