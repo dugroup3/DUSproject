@@ -56,12 +56,12 @@ if ($rows == 0) {
     //echo $Capacity;
 
     //Get the Total num of Booking
-    $BookingCapacity = CheckBooking($StartTime, $EndTime);
+    $BookingCapacity = CheckBooking($FacilityID,$StartTime, $EndTime);
     $BookingCapacity = $BookingCapacity['num'];
     //echo $BookingCapacity;
 
     //if have capacity left
-    if ($BookingCapacity <= $Capacity) {
+    if ($BookingCapacity < $Capacity) {
         // if no error occured, continue ....
         $statement = AddBooking($FacilityID, $UserID, $StartTime, $EndTime, $Prices);
         if ($statement) {

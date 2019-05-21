@@ -157,9 +157,9 @@ function AddBooking($FacilityID, $UserID, $Starttime, $Endtime, $Totalcost)
 }
 
 //Check whether the booking meet the  capacity
-function CheckBooking($StartTime,$Endtime){
+function CheckBooking($FacilityID,$StartTime,$Endtime){
     $dbh = connectDBPDO();
-    $sql = "SELECT COUNT(BookingID) as num FROM Booking WHERE Starttime>='$StartTime' AND Endtime<='$Endtime'";
+    $sql = "SELECT COUNT(BookingID) as num FROM Booking WHERE FacilityID='$FacilityID' AND Starttime>='$StartTime' AND Endtime<='$Endtime'";
     $statement = $dbh->query($sql);
     $rows = $statement->fetch(PDO::FETCH_ASSOC);
     $dbh = null;
