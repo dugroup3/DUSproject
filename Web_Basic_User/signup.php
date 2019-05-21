@@ -53,7 +53,7 @@ try {
             echo "Register fail";
         }
     } else {
-        echo "Sign Up fail. This Username have been use";
+        echo "<script>alert('Register fail This email has registered!');location.href='SignUpPage.php';</script>";
     }
 
 } catch (PDOException $e) {
