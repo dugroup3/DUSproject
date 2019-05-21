@@ -38,21 +38,21 @@
                 <label for="usernameText" class="col-sm-2 control-label">UserName:</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="usernameText" name="userName"
-                           placeholder="Please input your Email address">
+                           placeholder="Please input your Email address" onblur="checkem()"><i id="email_i"></i>
                 </div>
             </div>
             <div class="form-group">
                 <label for="passwordText" class="col-sm-2 control-label">PassWord:</label>
                 <div class="col-sm-10">
                     <input type="password" class="form-control" id="passwordText" name="password"
-                           placeholder="Please input your Password">
+                           placeholder="Please input your Password" onblur="checkpwd()"><i id="password_i"></i>
                 </div>
             </div>
             <div class="form-group">
                 <label for="Confirm_passwordText" class="col-sm-2 control-label">Confirm PassWord:</label>
                 <div class="col-sm-10">
                     <input type="password" class="form-control" id="Confirm_passwordText" name="confirm_password"
-                           placeholder="Please input your Password again">
+                           placeholder="Please input your Password again" onblur="checkrpwd(passwordText,Confirm_passwordText)" ><i id="repeatpsw_i"></i>
                 </div>
             </div>
             <div class="form-group">
@@ -101,5 +101,61 @@
     $(function () {
         $(".footerpage").load("footer.html");
     });
+</script>
+<script>
+    //Check email regular expression when registering
+    function checkem() {
+        var infem = document.getElementById('usernameText');
+        var infem_i = document.getElementById('email_i');
+        val = infem.value;
+        if (/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(val)) {
+            infem_i.innerHTML = "";
+            return true;
+        } else {
+            infem_i.innerHTML = "   Please enter a valid email address! ";
+            return false;
+        }
+    }
+    //Check the length of password
+    function checkpwd() {
+        var infpwd = document.getElementById('passwordText');
+        var infpwd_i = document.getElementById('password_i');
+        val = infpwd.value;
+        console.log(val === '')
+        if (val === '') {
+            infpwd_i.innerHTML = "   Please input password！ ";
+            return false;
+        }
+        if (val.length < 6) {
+            infpwd_i.innerHTML = "   Password must include minimum 6 characters！";
+            return false;
+        } else {
+            infpwd_i.innerHTML = "You can use this password!";
+            return true;
+        }
+    }
+    //Check if the passwords entered twice are the same
+    function checkrpwd() {
+        var infpwd = document.getElementById('passwordText');
+        val1 = infpwd.value;
+        var infrepwd = document.getElementById('Confirm_passwordText');
+        val2 = infrepwd.value;
+        var repeatpsw_i = document.getElementById('repeatpsw_i');
+        if (val2 === '') {
+            repeatpsw_i.innerHTML = " Please confirm password！";
+            return false;
+        }
+        if (val1 !== val2) {
+            repeatpsw_i.innerHTML = " The two passwords you entered were inconsistent！";
+            return false;
+        } else {
+            repeatpsw_i.innerHTML = " Please remember your password！";
+            return true;
+        }
+    }
+
+    function $(id) {
+        return document.getElementById(id);
+    }
 </script>
 </html>
