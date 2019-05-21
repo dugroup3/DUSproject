@@ -105,17 +105,16 @@ function check_Login_form() {
 
 //Check Sign Up Form
 function check_Modify_password_form() {
-    var username = document.getElementById("usernameText").value;
+    var emailcode = document.getElementById("emailcodeText").value;
     var password = document.getElementById("passwordText").value;
     var confirm_password = document.getElementById("Confirm_passwordText").value;
 
-
-    if (!reg.test(username)) {
-        alert("Please input the Your Email Address as username!!");
+    if(emailcode.length ==0){
+        alert("Please enter the code");
         return false;
     }
-    if (password.length == 0) {
-        alert("Please enter the password");
+    if (password.length <6) {
+        alert("Please enter the 6 digital password");
         return false;
     }
     if (password != confirm_password) {
