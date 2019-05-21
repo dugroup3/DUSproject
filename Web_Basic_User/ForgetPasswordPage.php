@@ -1,10 +1,3 @@
-/**
- * Created by PhpStorm.
- * User: LinYang
- * Date: 2019-05-06
- * Time: 14:55
- * Login Page
- */
 <!DOCTYPE html>
 <html>
 <head>
