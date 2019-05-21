@@ -14,7 +14,7 @@ function check_form() {
         return false;
     }
     if (password.length < 6) {
-        alert("Please enter 6 digital password");
+        alert("Please enter 6 digital password!!");
         return false;
     }
     if (password != confirm_password) {
