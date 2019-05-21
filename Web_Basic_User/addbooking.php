@@ -61,7 +61,7 @@ if($FacilityID==17){
                 $e=explode(':',$endTime[1]);
                 if($s[0]<=$i&&$j<=$e[0]){
                     $number++;
-                    if($number>=2){
+                    if($number>=20){
                         $result="0";
                         if($j<=10){
                         echo "<script> alert(\"$i:00:00 to 0$j:00:00 has been Booking full!\");
