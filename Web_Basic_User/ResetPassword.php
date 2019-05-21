@@ -45,14 +45,14 @@
                 <label for="passwordText" class="col-sm-2 control-label">New PassWord:</label>
                 <div class="col-sm-10">
                     <input type="password" class="form-control" id="passwordText" name="password"
-                           placeholder="Please input your Password">
+                           placeholder="Please input your Password" onblur="checkpwd()" ><i id="password_i"></i>
                 </div>
             </div>
             <div class="form-group">
                 <label for="Confirm_passwordText" class="col-sm-2 control-label">Confirm PassWord:</label>
                 <div class="col-sm-10">
                     <input type="password" class="form-control" id="Confirm_passwordText" name="confirm_password"
-                           placeholder="Please input your Password again">
+                           placeholder="Please input your Password again" onblur="checkrpwd(passwordText,Confirm_passwordText)" ><i id="repeatpsw_i"></i>
                 </div>
             </div>
             <div class="form-group">
@@ -116,5 +116,43 @@
     $(function () {
         $(".footerpage").load("footer.html");
     });
+</script>
+<script>
+    function checkpwd() {
+        var infpwd = document.getElementById('passwordText');
+        var infpwd_i = document.getElementById('password_i');
+        val = infpwd.value;
+        console.log(val === '')
+        if (val === '') {
+            infpwd_i.innerHTML = "   Please input password！ ";
+            return false;
+        }
+        if (val.length < 6) {
+            infpwd_i.innerHTML = "   Password must include minimum 6 characters！";
+            return false;
+        } else {
+            infpwd_i.innerHTML = "You can use this password!";
+            return true;
+        }
+    }
+    //Check if the passwords entered twice are the same
+    function checkrpwd() {
+        var infpwd = document.getElementById('passwordText');
+        val1 = infpwd.value;
+        var infrepwd = document.getElementById('Confirm_passwordText');
+        val2 = infrepwd.value;
+        var repeatpsw_i = document.getElementById('repeatpsw_i');
+        if (val2 === '') {
+            repeatpsw_i.innerHTML = " Please confirm password！";
+            return false;
+        }
+        if (val1 !== val2) {
+            repeatpsw_i.innerHTML = " The two passwords you entered were inconsistent！";
+            return false;
+        } else {
+            repeatpsw_i.innerHTML = " Please remember your password！";
+            return true;
+        }
+    }
 </script>
 </html>
