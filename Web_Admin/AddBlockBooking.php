@@ -97,10 +97,18 @@
             </div>
             <div class="form-group">
                 <label for="DaysOfWeekText" class="col-sm-2 control-label">Days of Week:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="DaysOfWeekText" name="DaysOfWeek"
-                           placeholder="For example if held on Sunday= 0, Monday = 1 .... Saturday=6">
-                </div>
+<!--                <div class="col-sm-10">-->
+<!--                    <input type="text" class="form-control" id="DaysOfWeekText" name="DaysOfWeek"-->
+<!--                           placeholder="For example if held on Sunday= 0, Monday = 1 .... Saturday=6">-->
+<!--                </div>-->
+                <label><input id="DaysOfWeekText" name="DaysOfWeek[]" type="checkbox" value="" />All </label>
+                <label><input id="DaysOfWeekText" name="DaysOfWeek[]" type="checkbox" value="1" />Monday </label>
+                <label><input id="DaysOfWeekText" name="DaysOfWeek[]" type="checkbox" value="2" />Tuesday </label>
+                <label><input id="DaysOfWeekText" name="DaysOfWeek[]" type="checkbox" value="3" />Wednesday </label>
+                <label><input id="DaysOfWeekText" name="DaysOfWeek[]" type="checkbox" value="4" />Thursday </label>
+                <label><input id="DaysOfWeekText" name="DaysOfWeek[]" type="checkbox" value="5" />Friday </label>
+                <label><input id="DaysOfWeekText" name="DaysOfWeek[]" type="checkbox" value="6" />Saturday </label>
+                <label><input id="DaysOfWeekText" name="DaysOfWeek[]" type="checkbox" value="7" />Sunday </label>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">

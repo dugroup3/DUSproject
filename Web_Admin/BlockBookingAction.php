@@ -47,6 +47,9 @@ $DaysOfWeek = $_POST['DaysOfWeek'];
 
 
 
+$DaysOfWeek=implode(',',$DaysOfWeek);
+
+
 //1. Find the user by username check whether he has register.
 $rows = SelectUserByID($UserID);
 $Facilityrows = FindFacilityID($FacilityName);
