@@ -7,6 +7,7 @@ PURPOSE OF PROJECT: Build a website for user to make a booking on Durham Univers
                     User can Register/Login, password recovery and make a booking through the system.
 VERSION or DATE: 22/5/19
 AUTHORS: Chining Jiang, Tingran Bian, Lin Yang, Xiaohe Lu and Zixin Zhang
+
 HOW TO START THIS PROJECT: 
 USER INSTRUCTIONS:
 
