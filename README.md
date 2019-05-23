@@ -3,12 +3,16 @@ For Group 3
 For academic use.
 
 PROJECT TITLE: Durham University Sport 
+
 PURPOSE OF PROJECT: Build a website for user to make a booking on Durham University Sport. The Admin can manage the Booking and Facility and view overall Booking calendar.
                     User can Register/Login, password recovery and make a booking through the system.
+
 VERSION or DATE: 22/5/19
+
 AUTHORS: Chining Jiang, Tingran Bian, Lin Yang, Xiaohe Lu and Zixin Zhang
 
 HOW TO START THIS PROJECT: 
+
 USER INSTRUCTIONS:
 
 1. import the project files into your PHP environment, build a database which name should be the same name with the .sql file name and import the .sql file to your local database.

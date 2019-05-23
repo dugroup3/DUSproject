@@ -101,7 +101,6 @@
 <!--                    <input type="text" class="form-control" id="DaysOfWeekText" name="DaysOfWeek"-->
 <!--                           placeholder="For example if held on Sunday= 0, Monday = 1 .... Saturday=6">-->
 <!--                </div>-->
-                <label><input id="DaysOfWeekText" name="DaysOfWeek[]" type="checkbox" value="" />All </label>
                 <label><input id="DaysOfWeekText" name="DaysOfWeek[]" type="checkbox" value="0" />Sunday </label>
                 <label><input id="DaysOfWeekText" name="DaysOfWeek[]" type="checkbox" value="1" />Monday </label>
                 <label><input id="DaysOfWeekText" name="DaysOfWeek[]" type="checkbox" value="2" />Tuesday </label>
