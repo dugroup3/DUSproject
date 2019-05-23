@@ -119,8 +119,6 @@ if (!empty($_GET['FacilityID'])) {
             die("Please Enter Close Time.");
         } else if (empty($Capacity)) {
             die("Please Enter Capacity.");
-        } else if (empty($Capacity)) {
-            die("Please Enter Capacity.");
         } else if (empty($imgFile)) {
             $statement = EditFacilityInfo($FacilityID, $FacilityName, $OpenTime, $CloseTime, $Description, $Capacity, $Prices);
             if ($statement) {
@@ -128,7 +126,7 @@ if (!empty($_GET['FacilityID'])) {
             } else {
                 echo "<script>alert('Update Facility Fail!! Please add again');location.href='FacilityManagement.php';</script>";
             }
-        } else {
+        } if($imgFile) {
             $upload_dir = '../public/img/' . basename($_FILES['Fimage']['name']); // upload directory
 
             $imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // get image extension
