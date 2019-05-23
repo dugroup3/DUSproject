@@ -2,6 +2,8 @@
 For Group 3
 For academic use.
 
+GITHUB URL:https://github.com/dugroup3/DUSproject
+
 PROJECT TITLE: Durham University Sport 
 
 PURPOSE OF PROJECT: Build a website for user to make a booking on Durham University Sport. The Admin can manage the Booking and Facility and view overall Booking calendar.
@@ -45,5 +47,5 @@ Password: 111111
 
 The normal account
 Username : jiangchiying2017@163.com
-Password : 111
+Password : 111111
 
