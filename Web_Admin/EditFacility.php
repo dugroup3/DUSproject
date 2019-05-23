@@ -85,7 +85,7 @@ if (!empty($_GET['FacilityID'])) {
             </div>
         </div>
         <div class="form-group">
-            <label for="PricesText" class="col-sm-2 control-label">Prices:</label>
+            <label for="PricesText" class="col-sm-2 control-label">Prices/Per hour:</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="PricesText" name="Prices"
                        value="<?php echo $rows['Prices'] ?>">
