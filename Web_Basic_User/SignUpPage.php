@@ -134,6 +134,25 @@
             return true;
         }
     }
+
+    /*function checkpassword() {
+        var infpwd = document.getElementById('passwordText');
+        var infpwd_i = document.getElementById('password_i');
+        val = infpwd.value;
+        console.log(val === '')
+        if (val === '') {
+            infpwd_i.innerHTML = "   Please input password！ ";
+            return false;
+        }
+        if (val.length < 6) {
+            infpwd_i.innerHTML = "   Password must include minimum 6 characters and letters!";
+
+        } else {
+            infpwd_i.innerHTML = "You can use this password!";
+            return true;
+        }
+    }*/
+
     //Check if the passwords entered twice are the same
     function checkrpwd() {
         var infpwd = document.getElementById('passwordText');
